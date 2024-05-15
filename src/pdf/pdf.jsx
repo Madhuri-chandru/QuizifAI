@@ -166,17 +166,17 @@ export default function quiztype() {
   const [optionsArray, setoptionsArray] = useState("");
   const [questionsData, setquestionsData] = useState("");
   const [numQuestions, setNumQuestions] = useState("");
-  const [questions, setQuestions] = useState(
-    // Array.from({ length: numQuestions }, () => ({
-    //   question_text: "",
-    //   options: [
-    //     { answer_option_text: "" },
-    //     { answer_option_text: "" },
-    //     { answer_option_text: "" },
-    //     { answer_option_text: "" },
-    //   ],
-    // }))
-  );
+  // const [questions, setQuestions] = useState(
+  //   // Array.from({ length: numQuestions }, () => ({
+  //   //   question_text: "",
+  //   //   options: [
+  //   //     { answer_option_text: "" },
+  //   //     { answer_option_text: "" },
+  //   //     { answer_option_text: "" },
+  //   //     { answer_option_text: "" },
+  //   //   ],
+  //   // }))
+  // );
   const [courseOptions, setCourseOptions] = useState([]);
   const [classOptions, setClassOptions] = useState([]);
   const [coursename, setcoursename] = useState("");
@@ -202,7 +202,7 @@ export default function quiztype() {
   const [selectedClass, setSelectedClass] = useState('');
   const [classes, setClasses] = useState([]);
 
- 
+  const [questions, setQuestions] = useState([]);
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -485,9 +485,11 @@ export default function quiztype() {
     setQuestions(newQuestions);
   };
 
-  const handleFileChange = (e) => {
-    setUploadedFile(e.target.files[0]);
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setUploadedFile(file);
   };
+
   const handleNext = async () => {
     try {
       const formData = new FormData();
@@ -523,7 +525,7 @@ export default function quiztype() {
   
       if (response.ok && responseData.response === 'success') {
         // Assuming router and state setter are defined properly
-        navigate("/quizcreated", { state: { quizData: responseData } });
+        setQuestions(responseData.data[0].questions);
       } else {
         if (
           responseData.detail &&
@@ -542,6 +544,68 @@ export default function quiztype() {
     }
   };
   
+  const handleNext3 = async () => {
+    try {
+      const questionDuration = calculateQuizDuration();
+      
+      const response = await fetch(`https://quizifai.com:8010/crt_qz_from_pdf`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          quiz_title: title,
+          num_questions: numQuestions,
+          quiz_description: description,
+          quiz_category_name: selectedCategory,
+          multi_answer: multiAnswer,
+          quiz_sub_category_name: selectedSubCategory,
+          class_name: selectedClass,
+          pass_percentage: percentage,
+          quiz_complexity_name: selectedComplexity,
+          retake_flag: retake,
+          quiz_duration: duration,
+          course_name: selectedCourse,
+          quiz_time_bounded_questions: timings,
+          quiz_public_access: publicAccess,
+          available_from: availablefrom,
+          disabled_on: disabledon,
+          quiz_total_marks: quiztotalmarks,
+          questions: questions.map((question) => ({
+            question_text: question.question_text,
+            question_weightage: question.question_weightage,
+            multi_answer_flag: multiAnswer,
+            question_duration: questionDuration,
+            options: question.options.map((option) => ({
+              answer_option_text: option.answer_option_text,
+              correct_answer_flag: option.correct_answer_flag,
+            })),
+          })),
+        }),
+      });
+      const responseData = await response.json();
+      console.log(responseData, "data");
+  
+      if (response.ok && responseData.response === "success") {
+        // Assuming router and state setter are defined properly
+        navigate("/quizcreated", { state: { quizData: responseData } });
+      } else {
+        if (responseData.detail && responseData.detail[0].type === "missing" && responseData.detail[0].loc[1] === "body" && responseData.detail[0].loc[2] === "num_questions") {
+          setErrorMessage("Please provide the number of questions for the quiz.");
+        } else {
+          setErrorMessage(responseData.detail);
+        }
+      }
+    } catch (error) {
+      console.error("Type-Quiz failed:", error);
+      setErrorMessage("An error occurred while choosing the type of the quiz");
+    }
+  };
+
+
+
+
+
   const handleQuestionChange = (index, value) => {
     const updatedQuestions = [...questions];
     updatedQuestions[index] = value;
@@ -683,6 +747,7 @@ export default function quiztype() {
           </div> */}
           <Navigation/>
         </header>
+        {!showRegistrationSuccess && (
         <main className="w-max-auto">
         <div className="w-[844px] h-[48px] absolute top-[30px] left-[161px] rounded-[10px] bg-[#FCE7E7] z-0">
             <h1 className="font-Poppins font-semibold text-[25px] leading-[37.5px] text-[#555555] flex justify-center items-center mt-2 ml-20">
@@ -1107,7 +1172,168 @@ export default function quiztype() {
       {/* <h1 className="font-Poppins font-normal text-[10px] leading-[15px] text-[#555555] mt-7 ml-5">{`Uploading ${uploadProgress}%`}</h1> */}
       <button className="rounded-[10px] bg-[#1E4DE9] text-slate-50 mt-4 ml-9 p-2" onClick={handleNext}>Upload</button>
           </div>
+          <div className="w-[98px] h-[32px] absolute top-[840px] left-[1182px] rounded-[10px] bg-[#1E4DE9]">
+              <button
+                // href="./enter-quiz"
+                onClick={handleNext1}
+                className="font-Poppins font-medium text-[15px] leading-[22.5px] flex justify-start px-4 py-1 text-white"
+              >
+                Next
+                <img
+                  className="w-[24px] h-[24px] ml-4"
+                  alt="next icon"
+                  src={Next}
+                />
+              </button>
+            </div>
         </main>
+        )}
+        {showRegistrationSuccess && (
+          <main className="w-max-auto">
+            <div className="w-[848px] h-[44px] absolute top-[90px] left-[298px]">
+              <h1 className="font-Poppins font-bold text-[30px] leading-[45px] text-orange-400">
+                Create / Edit your Quiz
+              </h1>
+              <h1 className="font-Poppins font-medium text-[12px] leading-[18px]">
+                Enter all your questions, options, and answers
+              </h1>
+            </div>
+
+            {/* Questions and options */}
+            <div className="absolute top-[210px] left-[298px] w-[1212px] h-[450px] overflow-auto">
+            {questions.map((question, questionIndex) => (
+  <div key={questionIndex} className="mb-8 ">
+    {/* Input field for question */}
+    <div className="flex items-center mb-4">
+      <div className="mr-2 text-xl font-normal">
+        {questionIndex + 1}.
+      </div>
+      <input
+        type="text"
+        placeholder={`Question`}
+        className="w-[70%] h-[50px] rounded-[20px] border-solid border-[#B8BBC2] border-[1.8px] p-[15px] "
+        value={question.question_text}
+        onChange={(e) => {
+          const newQuestions = [...questions];
+          newQuestions[questionIndex].question_text = e.target.value;
+          setQuestions(newQuestions);
+        }}
+      />
+
+      {/* Input field for question weightage */}
+      <input
+        type="number"
+        placeholder="Weightage"
+        className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mx-2 p-[10px] font-normal"
+        value={question.question_weightage}
+        onChange={(e) => {
+          const value = parseInt(e.target.value);
+          const updatedQuestions = questions.map((q, index) => {
+            if (index === questionIndex) {
+              return { ...q, question_weightage: value };
+            }
+            return q;
+          });
+          setQuestions(updatedQuestions);
+        }}
+      />
+
+      {/* Input field for question duration */}
+      <input
+              type="text"
+              placeholder="Duration"
+              className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[10px] font-normal"
+              value={question.question_duration}
+              onChange={(e) => {
+                const value = parseInt(e.target.value) * 60 ;
+                const updatedQuestions = [...questions];
+                updatedQuestions[questionIndex].question_duration = value;
+                setQuestions(updatedQuestions);
+              }}
+      />
+      {/* <input
+  type="number"
+  placeholder="Duration"
+  className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[10px] font-normal"
+  value={question.question_duration}
+  onChange={(e) => {
+    const value = parseInt(e.target.value); // Parse input value to integer
+    if (!isNaN(value)) { // Check if value is a valid number
+      const updatedQuestions = questions.map((q, index) => {
+        if (index === questionIndex) {
+          return { ...q, question_duration: value };
+        }
+        return q;
+      });
+      setQuestions(updatedQuestions);
+    }
+  }}
+/> */}
+    </div>
+    {/* Input fields for options */}
+    {question.options.map((option, optionIndex) => (
+      <div key={optionIndex} className="flex items-center mb-2">
+        {/* Option input field */}
+        <div className="mr-2 text-xl font-normal">
+          {String.fromCharCode(97 + optionIndex)}.
+        </div>
+        <input
+          type="text"
+          placeholder={`Option Text`}
+          className="w-[339px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[15px] font-normal"
+          value={option.answer_option_text}
+          onChange={(e) => {
+            const newOptions = [...question.options];
+            newOptions[optionIndex].answer_option_text = e.target.value;
+            const newQuestions = [...questions];
+            newQuestions[questionIndex].options = newOptions;
+            setQuestions(newQuestions);
+          }}
+        />
+        {/* Add correct answer flag input */}
+        <button
+          className={`mr-2 ${
+            option.correct_answer_flag ? "bg-green-500" : "bg-gray-300"
+          } rounded-full w-10 h-[20px] transition-colors duration-300 focus:outline-none`}
+          onClick={() =>
+            handleToggleButton(questionIndex, optionIndex)
+          }
+        >
+          <span
+            className={`block ${
+              option.correct_answer_flag
+                ? "translate-x-5"
+                : "translate-x-0"
+            } transform -translate-y-1.5 w-[18px] h-[18px] relative top-[6px] bg-white rounded-full shadow-md transition-transform duration-300`}
+          ></span>
+        </button>
+      </div>
+    ))}
+  </div>
+))}
+
+            </div>
+
+            {/* Submit button */}
+            <div className="absolute top-[687px] left-[308px]">
+              <button
+                className="w-[123px] h-[32px] rounded-[10px] bg-[#1B1852] text-white"
+                onClick={handleNext2}
+              >
+                Back
+              </button>
+            </div>
+
+            <div className="absolute top-[687px] left-[775px]">
+              <button
+                className="w-[123px] h-[32px] rounded-[10px] bg-[#1B1852] text-white"
+                onClick={handleNext}
+              >
+                Create
+              </button>
+            </div>
+          </main>
+        )}
       </div>
     </>
   );
