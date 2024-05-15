@@ -121,6 +121,14 @@ const LoginPage = () => {
       console.log("API Response:", responseData);
       console.log(responseData);
 
+      console.log("User ID:", responseData[0].user_id[0]);
+      console.log("User Name:", responseData[0].user_name);
+     
+      // Store user_id and user_name in localStorage
+      localStorage.setItem('user_id', responseData[0].user_id[0]);
+      localStorage.setItem('user_name', responseData[0].user_name)
+    
+
       {
         /*const userId = responseData[0].user_id[0]; 
       console.log('User ID:', userId);
@@ -158,7 +166,13 @@ const LoginPage = () => {
         }  else if (responseData.response === "success") {
           // const userId = responseData.data.user_id;
           // sessionStorage.setItem('userId', userId);
-          navigate("/dashboard");
+
+          // const userName = responseData.response.user_name.user_id;
+          // sessionStorage.setItem('userName', userName);
+          // // sessionStorage.setItem('userid', userId);
+          // navigate("/dashboard");
+          
+          
         } else {
           setErrorMessage("");
           navigate("/dashboard");
