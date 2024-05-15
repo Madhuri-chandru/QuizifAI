@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 //import { useRouter } from 'next/router';
-import Navigation from "../navbar/navbar.jsx"
-import LogoutBar from "../logoutbar/logoutbar.jsx"
+import Navigation from "../navbar/navbar.jsx";
+import LogoutBar from "../logoutbar/logoutbar.jsx";
 
 import styles from "./free-profile.module.css";
 import logoutArrowIcon from "../assets/Images/images/dashboard/logoutArrow1.png";
@@ -32,43 +32,40 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 
-
-
 const FreeProfile = () => {
   const getFormattedDate = () => {
     const currentDate = new Date();
     const options = {
-      year: "numeric", 
-      month: "short", 
-      day: "numeric", 
-      weekday: "long", 
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      weekday: "long",
     };
     return currentDate.toLocaleDateString("en-IN", options);
   };
 
-  const currentValue1 = 50; 
-  const maxValue1 = 100; 
-  const currentValue2 = 30; 
-  const maxValue2 = 80; 
-  
+  const currentValue1 = 50;
+  const maxValue1 = 100;
+  const currentValue2 = 30;
+  const maxValue2 = 80;
 
-
-  const [selectedButton, setSelectedButton] = useState('Email');
-  const [inputValue, setInputValue] = useState('');
-  const [preferredLoginMethod, setPreferredLoginMethod] = useState('Email');
-  const [firstName, setFirstName] = useState('');
-  const [middleName, setMiddleName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [gender, setGender] = useState('');
-  const [dob, setDob] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [address1, setAddress1] = useState('');
-  const [address2, setAddress2] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [email, setEmail] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
+  const [selectedButton, setSelectedButton] = useState("Email");
+  const [inputValue, setInputValue] = useState("");
+  const [preferredLoginMethod, setPreferredLoginMethod] = useState("Email");
+  const [firstName, setFirstName] = useState("");
+  const [middleName, setMiddleName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [gender, setGender] = useState("");
+  const [dob, setDob] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [accesskey, setaccesskey] = useState("");
 
   const [latestResults, setLatestResults] = useState([]);
   const [timeData, setTimeData] = useState([]);
@@ -83,58 +80,69 @@ const FreeProfile = () => {
     setInputValue(buttonName);
   };
 
- // const BasicProgressBar = ({ currentValue, maxValue }) => (
-   // <progress value={currentValue} max={maxValue}>{currentValue}%</progress>
+  // const BasicProgressBar = ({ currentValue, maxValue }) => (
+  // <progress value={currentValue} max={maxValue}>{currentValue}%</progress>
   //);
 
   const BasicProgressBar = ({ currentValue, maxValue }) => (
-    <progress
-      value={currentValue}
-      max={maxValue}
-      style={{ width: "100px" }} 
-    >
+    <progress value={currentValue} max={maxValue} style={{ width: "100px" }}>
       {currentValue}%
     </progress>
   );
 
-  useEffect(() => {
-    const handleSubmit = async () => {
-      const payload = {
-        user_id: 1, 
-        first_name: firstName,
-        middle_name: middleName,
-        last_name: lastName,
-        user_email: email,
-        user_phone_number: parseInt(mobileNumber === '' ?  '0' : mobileNumber),
-        gender: gender,
-        date_of_birth: dob,
-        user_address_line_1: address1,
-        user_address_line_2: address2,
-        occupation: 'student', 
-        preferred_login_method: preferredLoginMethod,
-      };
-  
-      try {
-        const response = await fetch('https://quizifai.com:8010/edt_prfl_dtls', {
-          method: 'POST',
+
+  const handleSubmit = async () => {
+    const payload = {
+      user_id: 1,
+      first_name: firstName,
+      middle_name: middleName,
+      last_name: lastName,
+      user_email: email,
+      user_phone_number: parseInt(mobileNumber === "" ? "0" : mobileNumber),
+      gender: gender,
+      date_of_birth: dob,
+      user_address_line_1: address1,
+      user_address_line_2: address2,
+      occupation: "student",
+      preferred_login_method: preferredLoginMethod,
+      access_key:accesskey,
+      user_role: 'quiz user',
+      user_type: 'public',
+      user_org_id: 0,
+      active_flag: true,
+      user_address_id: 0,
+      user_location_id: 0,
+      access_key: 'string',
+      otp: Otp ,
+    };
+
+    try {
+      const response = await fetch(
+        "https://quizifai.com:8010/edt_prfl_dtls",
+        {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(payload),
-        });
-  
-        if (!response.ok) {
-          throw new Error('Failed to submit data');
         }
+      );
 
-        const responseData = await response.json();
-        console.log(responseData);
-        console.log('Response:', response);
-  
-      } catch (error) {
-        console.error('Error submitting data:', error);
+      if (!response.ok) {
+        throw new Error("Failed to submit data");
       }
-    };
+
+      const responseData = await response.json();
+      console.log(responseData);
+      console.log("Response:", response);
+    } catch (error) {
+      console.error("Error submitting data:", error);
+    }
+  };
+
+
+  useEffect(() => {
+ 
     const fetchQuizData = async () => {
       try {
         const response = await fetch(
@@ -156,10 +164,56 @@ const FreeProfile = () => {
       }
     };
 
-    handleSubmit();
+ 
     fetchQuizData();
   }, []);
-  
+
+  const [pincode, setpincode] = useState("");
+  const [countryname, setcountryname] = useState("");
+  const [statename, setstatename] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [responseData, setResponseData] = useState(null);
+
+  const handleSubmit1 = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "https://quizifai.com:8010/location_details/",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            pincode: pincode,
+          }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      const data = await response.json();
+      setResponseData(data); // Set response data in state
+      console.log(data); // Displaying response in console
+      setErrorMessage(""); // Clear any previous error message
+      if (
+        data &&
+        data.data &&
+        Array.isArray(data.data[0]) &&
+        data.data[0].length > 0
+      ) {
+        setstatename(data.data[0][0].Statename);
+        setcountryname(data.data[0][0].country_name);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setErrorMessage("Failed to submit form. Please try again.");
+    }
+  };
   return (
     <div className={styles.container}>
       {/*<Head>
@@ -168,7 +222,7 @@ const FreeProfile = () => {
           rel="stylesheet"
         />
   </Head>*/}
-     <Navigation/>
+      <Navigation />
       <div className={styles.mainContent}>
         <div className={styles.header}>
           {/* Header content */}
@@ -184,412 +238,471 @@ const FreeProfile = () => {
             </div>
           </div>
         </div>
-        <div className={styles.contentContainer} style={{marginLeft:"80px"}}>
-    <div className={styles.imgAndTextContainer}>
-    <div className={styles.profileimgContainer}>
-  <img
-    src={profileimg}
-    alt="img"
-    className={styles.profileimg} style={{width:"113px", height:"110px"}}
-  />
-</div>
+        <div className={styles.contentContainer} style={{ marginLeft: "80px" }}>
+          <div className={styles.imgAndTextContainer}>
+            <div className={styles.profileimgContainer}>
+              <img
+                src={profileimg}
+                alt="img"
+                className={styles.profileimg}
+                style={{ width: "113px", height: "110px" }}
+              />
+            </div>
 
-  <div className={styles.contentContainer}>
-  <div className={styles.textContainer} style={{marginLeft:"150px", marginTop:"-70px"}}>
-        <div className={styles.textLine1}>Profession </div>
-  <div className={styles.textLine2}>(Plan of the Subscription)  </div>
-  <div className={styles.textLine3}>no. days left in Subscription/ free</div>
-      </div>
-    </div>
-  </div>
-  
-  <div className={styles.additionalTextContainer1}>
-  <div className={styles.contentContainer1} style={{marginTop:"20px" ,marginLeft:"40px"}} >
-    <div className={styles.textAndimgContainer1}>
-      <div className={styles.textContainer1}>
-        <p className={styles.textLines1}>You Ranked</p>
-    
-      </div>
-      <div className={styles.imgContainer2}>
-  <img
-    src={rankingimg} 
-    alt="img"
-    className={styles.Rankingimg} style={{width:"60px", height:"40px"}}
-  />
-</div>
-    </div>
-    <div className={styles.textAndimgContainer2}>
-      <div className={styles.textContainer1}>
-        <p className={styles.textLines3} style={{marginTop:"-20px"}}>002</p>
-        <p className={styles.textLines4} style={{marginTop:"-20px"}}>in last 30 days</p>
-      </div>
-      
-    </div>
-    <div className={styles.imgContainer1}>
-        <img
-          src={infoph}
-          alt="img" 
-          className={styles.infoimg} style={{width:"10px", height:"10px"}}
-        />
-      </div>
-    </div>
-   </div>
-  </div>
-  <div className={styles.inputContainer}>
-  <div className={styles.inputRow}>
-  <div className={styles.inputGroup}>
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              id="firstName"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
+            <div className={styles.contentContainer}>
+              <div
+                className={styles.textContainer}
+                style={{ marginLeft: "150px", marginTop: "-70px" }}
+              >
+                <div className={styles.textLine1}>Profession </div>
+                <div className={styles.textLine2}>
+                  (Plan of the Subscription){" "}
+                </div>
+                <div className={styles.textLine3}>
+                  no. days left in Subscription/ free
+                </div>
+              </div>
+            </div>
           </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="middleName">Middle Name</label>
-            <input
-              type="text"
-              id="middleName"
-              placeholder="Middle Name"
-              value={middleName}
-              onChange={(e) => setMiddleName(e.target.value)}
-            />
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              type="text"
-              id="lastName"
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <div className={styles.inputGroup}>
-  <label htmlFor="gender">Gender</label>
-  <select
-    id="gender"
-    value={gender}
-    onChange={(e) => setGender(e.target.value)}
-  >
-    <option value="">Select Gender</option>
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-  </select>
-</div>
-</div>
 
-        <div className={styles.inputGroup}>
-          <label htmlFor="dob">Date of Birth</label>
-          <input
-            type="date"
-            id="dob"
-            placeholder="Select your date of birth"
-            value={dob}
-            onChange={(e) => setDob(e.target.value)}
-          />
-        </div>
-
-        <div className={styles.inputRow}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="postalCode">Postal Code</label>
-            <input
-              type="text"
-              id="postalCode"
-              placeholder="Postal Code"
-              value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-            />
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="address1">Address Line 1</label>
-            <input
-              type="text"
-              id="address1"
-              placeholder="Address Line 1"
-              value={address1}
-              onChange={(e) => setAddress1(e.target.value)}
-            />
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="address2">Address Line 2</label>
-            <input
-              type="text"
-              id="address2"
-              placeholder="Address Line 2"
-              value={address2}
-              onChange={(e) => setAddress2(e.target.value)}
-            />
+          <div className={styles.additionalTextContainer1}>
+            <div
+              className={styles.contentContainer1}
+              style={{ marginTop: "20px", marginLeft: "40px" }}
+            >
+              <div className={styles.textAndimgContainer1}>
+                <div className={styles.textContainer1}>
+                  <p className={styles.textLines1}>You Ranked</p>
+                </div>
+                <div className={styles.imgContainer2}>
+                  <img
+                    src={rankingimg}
+                    alt="img"
+                    className={styles.Rankingimg}
+                    style={{ width: "60px", height: "40px" }}
+                  />
+                </div>
+              </div>
+              <div className={styles.textAndimgContainer2}>
+                <div className={styles.textContainer1}>
+                  <p
+                    className={styles.textLines3}
+                    style={{ marginTop: "-20px" }}
+                  >
+                    002
+                  </p>
+                  <p
+                    className={styles.textLines4}
+                    style={{ marginTop: "-20px" }}
+                  >
+                    in last 30 days
+                  </p>
+                </div>
+              </div>
+              <div className={styles.imgContainer1}>
+                <img
+                  src={infoph}
+                  alt="img"
+                  className={styles.infoimg}
+                  style={{ width: "10px", height: "10px" }}
+                />
+              </div>
+            </div>
           </div>
         </div>
+        <div className={styles.inputContainer}>
+          <div className={styles.inputRow}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="middleName">Middle Name</label>
+              <input
+                type="text"
+                id="middleName"
+                placeholder="Middle Name"
+                value={middleName}
+                onChange={(e) => setMiddleName(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="gender">Gender</label>
+              <select
+                id="gender"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <option  className={styles.SelectGender} value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
 
-        <div className={styles.inputRow}>
           <div className={styles.inputGroup}>
-            <label htmlFor="city">City</label>
+            <label htmlFor="dob">Date of Birth</label>
             <input
-              type="text"
-              id="city"
-              placeholder="City Name"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
+              type="date"
+              id="dob"
+              placeholder="Select your date of birth"
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
             />
           </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="state">State</label>
-            <input
-              type="text"
-              id="state"
-              placeholder="State Name"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-            />
-          </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="country">Country</label>
-            <input
-              type="text"
-              id="country"
-              placeholder="Country Name"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            />
-          </div>
-        </div>
 
-        <div className={styles.toggleButtonsContainer}>
-        <button
-          className={`${styles.toggleButton} ${selectedButton === 'Email' && styles.selected}`}
-          onClick={() => handleButtonClick('Email')}
-        >
-            <img src={EmailIcon} alt="Email Icon" className={styles.icon1} /> Email
-        </button>
-        <button
+          <div className={styles.inputRow}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="postalCode">Postal Code</label>
+              <input
+                type="text"
+                id="postalCode"
+                placeholder="Postal Code"
+                value={pincode}
+                onChange={(e) => setpincode(e.target.value)}
+              />
+                     <div
+                    className={styles.searchicon}
+                    onClick={handleSubmit1}
+                    style={{
+                      backgroundImage: `url('images/signup/LineIcon.png'),url('images/signup/searchIcon.png')`,
+                      backgroundRepeat: "no-repeat",
+                      width: "40px",
+                      height: "20px",
+                      top: "450px",
+                      left: "190px",
+
+                      position: "absolute",
+                     
+
+                      // border: "1px solid #c2c2c2",
+                      backgroundPosition:
+                        "0px center, right 10px center, right 40px center",
+                      cours: "pointer",
+                    }}
+                  ></div>
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="address1">Address Line 1</label>
+              <input
+                type="text"
+                id="address1"
+                placeholder="Address Line 1"
+                value={address1}
+                onChange={(e) => setAddress1(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="address2">Address Line 2</label>
+              <input
+                type="text"
+                id="address2"
+                placeholder="Address Line 2"
+                value={address2}
+                onChange={(e) => setAddress2(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className={styles.inputRow}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="city">City</label>
+              <input
+                type="text"
+                id="city"
+                placeholder="City Name"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="state">State</label>
+              <input
+                type="text"
+                id="state"
+                placeholder="State Name"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="country">Country</label>
+              <input
+                type="text"
+                id="country"
+                placeholder="Country Name"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className={styles.toggleButtonsContainer}>
+            <button
+              className={`${styles.toggleButton} ${
+                selectedButton === "Email" && styles.selected
+              }`}
+              onClick={() => handleButtonClick("Email")}
+            >
+              <img src={EmailIcon} alt="Email Icon" className={styles.icon1} />{" "}
+              Email
+            </button>
+            {/* <button
           className={`${styles.toggleButton} ${selectedButton === 'Gmail' && styles.selected}`}
           onClick={() => handleButtonClick('Gmail')}
         >
          <img src={GmailIcon} alt="Gmail Icon" className={styles.icon2} /> Gmail
-        </button>
-        <button
-          className={`${styles.toggleButton} ${selectedButton === 'Mobile' && styles.selected}`}
-          onClick={() => handleButtonClick('Mobile')}
-        >
-           <img src={MobileIcon} alt="Mobile Icon" className={styles.icon3} /> Mobile
-        </button>
-      </div>
-
-        <div className={styles.inputRow}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="mail@gmail.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+        </button> */}
+            <button
+              className={`${styles.toggleButton} ${
+                selectedButton === "Mobile" && styles.selected
+              }`}
+              onClick={() => handleButtonClick("Mobile")}
+            >
+              <img
+                src={MobileIcon}
+                alt="Mobile Icon"
+                className={styles.icon3}
+              />{" "}
+              Mobile
+            </button>
           </div>
-          <div className={styles.inputGroup}>
-            <label htmlFor="mobileNumber">Mobile Number</label>
-            <input
-              type="tel"
-              id="mobileNumber"
-              placeholder="9874563210"
-              value={mobileNumber}
-              onChange={(e) => setMobileNumber(e.target.value)}
-            />
-            <div className={styles.buttonContainer}>
-              <button className={styles.customButton}>Verify</button>
-              <button className={styles.customButton}>Edit</button>
-            </div>
-    </div>
-    
-</div>
-</div>
 
-        
+          <div className={styles.inputRow}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="mobileNumber">Mobile Number</label>
+              <input
+                type="tel"
+                id="mobileNumber"
+                placeholder="mobileNumber"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+              />
+              <div className={styles.buttonContainer}>
+                <button className={styles.customButton} onClick={handleSubmit}>Verify</button>
+                <button className={styles.customButton}>Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          {/* <div className={styles.box}>
         <div className={styles.horizontalBoxes}>
-    <div className={styles.box}>
-    <div className={styles.contentWrapper}>
-          <div className={styles.resultWrapper}>
-            <div className={styles.latestResult}>
-              Latest Result
-              <div className={styles.resultInfo}>
-                <div className={styles.infoLine}>
-                  <span
-                    className={styles.info}
-                    style={{ fontSize: "10px", color: "grey", marginTop:"20px" , marginLeft:"10px" }}
-                  >
-                    Date -<span className={styles.title}>Title</span> - Topic
-                  </span>
-                  <span
-                    style={{
-                      marginLeft: "10px",
-                      
-                      width: "100px",
-                      height: "2px",
-                      fontSize:"10px",
-                    
-                    }}
-                  >
-                    <Progress percent={25} />
-                  </span>
-                </div>
-                <hr className={styles.divider} />
-                <div className={styles.infoLine}>
-                  <span
-                    className={styles.info}
-                    style={{ fontSize: "10px", color: "grey", marginTop:"5px" , marginLeft:"10px"}}
-                  >
-                    Date -<span className={styles.title}>Title</span> - Topic
-                  </span>
-                  <span
-                    style={{
-                      marginLeft: "10px",
-                      marginTop:"-10px", 
-                      width: "100px", 
-                      height: "2px",
-                      fontSize:"10px"
-                
-                    }}
-                  >
-                    <Progress percent={44} />
-                  </span> 
-                </div>
-                <hr className={styles.divider} />
-                <div className={styles.infoLine} style={{ fontSize: "10px" }}>
-                  <span
-                    className={styles.info}
-                    style={{ fontSize: "10px", color: "grey", marginTop:"5px" , marginLeft:"10px" }}
-                  >
-                    Date -<span className={styles.title}>Title</span> - Topic
-                  </span>
-                  <span
-                    style={{
-                      marginLeft: "10px",
-                      marginTop:"-10px",
-                      width: "100px",
-                      height: "2px",
-                  
-                      fontSize:"10px"
-                    }}
-                  >
-                    <Progress percent={40} />
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-    </div>
-    <div className={styles.box}>
-    <div className={styles.resultWrapper}>
-            <div className={styles.timeSpent}>
-              Time Spent on Quiz
-              <span className={styles.moreButton}>
-                Last week 
-              </span>
-              <div className={styles.progressBars}>
-                <div className={styles.progressBar}>
-                  <div className={styles.day}>Mon</div>
-                  <div className={styles.progress}>
+            <div className={styles.contentWrapper}>
+              <div className={styles.resultWrapper}>
+                <div className={styles.latestResult}>
+                  Latest Result
+                  <div className={styles.resultInfo}>
+                    <div className={styles.infoLine}>
+                      <span
+                        className={styles.info}
+                        style={{
+                          fontSize: "10px",
+                          color: "grey",
+                          marginTop: "20px",
+                          marginLeft: "10px",
+                        }}
+                      >
+                        Date -<span className={styles.title}>Title</span> -
+                        Topic
+                      </span>
+                      <span
+                        style={{
+                          marginLeft: "10px",
+
+                          width: "100px",
+                          height: "2px",
+                          fontSize: "10px",
+                        }}
+                      >
+                        <Progress percent={25} />
+                      </span>
+                    </div>
+                    <hr className={styles.divider} />
+                    <div className={styles.infoLine}>
+                      <span
+                        className={styles.info}
+                        style={{
+                          fontSize: "10px",
+                          color: "grey",
+                          marginTop: "5px",
+                          marginLeft: "10px",
+                        }}
+                      >
+                        Date -<span className={styles.title}>Title</span> -
+                        Topic
+                      </span>
+                      <span
+                        style={{
+                          marginLeft: "10px",
+                          marginTop: "-10px",
+                          width: "100px",
+                          height: "2px",
+                          fontSize: "10px",
+                        }}
+                      >
+                        <Progress percent={44} />
+                      </span>
+                    </div>
+                    <hr className={styles.divider} />
                     <div
-                      className={styles.progressFill}
-                      style={{ height: "20%" }}
-                    ></div>
-                  </div>
-                </div>
-                <div className={styles.progressBar}>
-                  <div className={styles.day}>Tue</div>
-                  <div className={styles.progress}>
-                    <div
-                      className={styles.progressFill}
-                      style={{ height: "30%" }}
-                    ></div>
-                  </div>
-                </div>
-                <div className={styles.progressBar}>
-                  <div className={styles.day}>Wed</div>
-                  <div className={styles.progress}>
-                    <div
-                      className={styles.progressFill}
-                      style={{ height: "50%" }}
-                    ></div>
-                  </div>
-                </div>
-                <div className={styles.progressBar}>
-                  <div className={styles.day}>Thu</div>
-                  <div className={styles.progress}>
-                    <div
-                      className={styles.progressFill}
-                      style={{ height: "70%" }}
-                    ></div>
-                  </div>
-                </div>
-                <div className={styles.progressBar}>
-                  <div className={styles.day}>Fri</div>
-                  <div className={styles.progress}>
-                    <div
-                      className={styles.progressFill}
-                      style={{ height: "40%" }}
-                    ></div>
-                  </div>
-                </div>
-                <div className={styles.progressBar}>
-                  <div className={styles.day}>Sat</div>
-                  <div className={styles.progress}>
-                    <div
-                      className={styles.progressFill}
-                      style={{ height: "60%" }}
-                    ></div>
-                  </div>
-                </div>
-                <div className={styles.progressBar}>
-                  <div className={styles.day}>Sun</div>
-                  <div className={styles.progress}>
-                    <div
-                      className={styles.progressFill}
-                      style={{ height: "80%" }}
-                    ></div>
+                      className={styles.infoLine}
+                      style={{ fontSize: "10px" }}
+                    >
+                      <span
+                        className={styles.info}
+                        style={{
+                          fontSize: "10px",
+                          color: "grey",
+                          marginTop: "5px",
+                          marginLeft: "10px",
+                        }}
+                      >
+                        Date -<span className={styles.title}>Title</span> -
+                        Topic
+                      </span>
+                      <span
+                        style={{
+                          marginLeft: "10px",
+                          marginTop: "-10px",
+                          width: "100px",
+                          height: "2px",
+
+                          fontSize: "10px",
+                        }}
+                      >
+                        <Progress percent={40} />
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-    </div>
-    <div className={styles.box}>
-    <div className={styles.resultWrapper}>
-            <div className={styles.rewards}>
-              Rewards
-              
+          <div className={styles.box}>
+            <div className={styles.resultWrapper}>
+              <div className={styles.timeSpent}>
+                Time Spent on Quiz
+                <span className={styles.moreButton}>Last week</span>
+                <div className={styles.progressBars}>
+                  <div className={styles.progressBar}>
+                    <div className={styles.day}>Mon</div>
+                    <div className={styles.progress}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ height: "20%" }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className={styles.progressBar}>
+                    <div className={styles.day}>Tue</div>
+                    <div className={styles.progress}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ height: "30%" }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className={styles.progressBar}>
+                    <div className={styles.day}>Wed</div>
+                    <div className={styles.progress}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ height: "50%" }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className={styles.progressBar}>
+                    <div className={styles.day}>Thu</div>
+                    <div className={styles.progress}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ height: "70%" }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className={styles.progressBar}>
+                    <div className={styles.day}>Fri</div>
+                    <div className={styles.progress}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ height: "40%" }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className={styles.progressBar}>
+                    <div className={styles.day}>Sat</div>
+                    <div className={styles.progress}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ height: "60%" }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className={styles.progressBar}>
+                    <div className={styles.day}>Sun</div>
+                    <div className={styles.progress}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ height: "80%" }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
+          <div className={styles.box}>
+            <div className={styles.resultWrapper}>
+              <div className={styles.rewards}>Rewards</div>
               <div className={styles.sentencesWrapper}>
-      {/* Add five <div> tags for the sentences */}
-      <div className={styles.sentence}>1. Top Ranked in last week</div>
-      <div className={styles.sentence}>2. Won four Vouchers</div>
-      <div className={styles.sentence}>3. Won four Vouchers</div>
-      <div className={styles.sentence}>4. Won four Vouchers</div>
-      <div className={styles.sentence}>5. Won four Vouchers</div>
-    </div>
-    </div>
-    </div>
-    </div>
+                {/* Add five <div> tags for the sentences */}
+                {/* <div className={styles.sentence}>
+                  1. Top Ranked in last week
+                </div>
+                <div className={styles.sentence}>2. Won four Vouchers</div>
+                <div className={styles.sentence}>3. Won four Vouchers</div>
+                <div className={styles.sentence}>4. Won four Vouchers</div>
+                <div className={styles.sentence}>5. Won four Vouchers</div>
+              </div>
+            </div>
+          </div>
+        </div>  */}
 
-
-
-        <div className={styles.contentWrapper1}>
+        {/* <div className={styles.contentWrapper1}>
           <div className={styles.latestQuizHeader}>
             <p>Latest Attended Quiz</p>
-
-            
           </div>
           <div className={styles.infoCards}>
             {/* Info cards content */}
-            
-            
-            
-            <div className={styles.card}>
+
+            {/* <div className={styles.card}>
               <span className={styles.title}>
                 {attemptedQuizzes[0]?.quiz_name}
               </span>
@@ -787,8 +900,8 @@ const FreeProfile = () => {
           </div>
           <div className={styles.infoCards}>
             {/* Info cards content */}
-            
-            <div className={styles.card}>
+
+            {/* <div className={styles.card}>
               <span className={styles.title}>
                 {topScoredQuizzes[0]?.quiz_name}
               </span>
@@ -980,183 +1093,214 @@ const FreeProfile = () => {
                 </div>
               </div>
             </div>
-            </div>
-        </div>
+          </div>
+        </div>  */} 
       </div>
       <div className={styles.logout}>
-        <div style={{ marginTop: "60px", display: "flex", alignItems: "center" , marginLeft:"20px"}}>
-  <span style={{ marginRight: "10px" }}>Logout</span>
-  <img
-    src={logoutArrowIcon}
-    alt="Logout Icon"
-    style={{ width: "30px", height: "20px", marginLeft:"130px" }}
-  />
-  </div>
-  <div style={{ textAlign: "left", marginTop: "30px", fontFamily: "Poppins", fontSize: "15px", fontWeight: 700, lineHeight: "23px", letterSpacing: "0em" , color:"#214082", marginLeft:"20px"}}>
-    You’ve completed 10 <br></br>Quiz’s this week of <br></br>average score of 85%
-  </div>
-  <div style={{ textAlign: "left", marginLeft: "20px" }}>
-    <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
-      <span style={{ fontSize: "15px", color: "#000000", fontWeight: 500, marginRight: "10px" }}>Notification</span>
-      <img
-        src={notifyIcon}
-        alt="Notify Icon"
-        className={styles.notifyIcon}
-        style={{ marginLeft: "120px" }}
-      />
-    </div>
-    <div style={{ marginTop: "20px", }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          marginBottom: "5px",
-        }}
-      >
         <div
           style={{
-            backgroundColor: "#FFE8EE",
-            width: "30px",
-            height: "30px",
-            borderRadius: "5px",
-            marginRight: "5px",
+            marginTop: "60px",
             display: "flex",
-            justifyContent: "center",
             alignItems: "center",
+            marginLeft: "20px",
           }}
         >
+          <span style={{ marginRight: "10px" }}>Logout</span>
           <img
-            src={todayTopicIcon}
-            alt="Scored Icon"
-            style={{ width: "15px", height: "15px" }}
+            src={logoutArrowIcon}
+            alt="Logout Icon"
+            style={{ width: "30px", height: "20px", marginLeft: "130px" }}
           />
         </div>
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            textAlign: "left",
+            marginTop: "30px",
+            fontFamily: "Poppins",
+            fontSize: "15px",
+            fontWeight: 700,
+            lineHeight: "23px",
+            letterSpacing: "0em",
+            color: "#214082",
+            marginLeft: "20px",
           }}
         >
-          <span
-            style={{
-              fontSize: "15px",
-              fontWeight: 500,
-              marginRight: "15px",
-            }}
-          >
-            Today - Topic
-          </span>
-          <span
-            style={{
-              fontSize: "10px",
-              color: "#9696BB",
-              marginTop: "3px",
-            }}
-          >
-            23 Jan 2024, Tuesday
-          </span>
+          You’ve completed 10 <br></br>Quiz’s this week of <br></br>average
+          score of 85%
         </div>
-      </div>
+        <div style={{ textAlign: "left", marginLeft: "20px" }}>
+          <div
+            style={{ display: "flex", alignItems: "center", marginTop: "20px" }}
+          >
+            <span
+              style={{
+                fontSize: "15px",
+                color: "#000000",
+                fontWeight: 500,
+                marginRight: "10px",
+              }}
+            >
+              Notification
+            </span>
+            <img
+              src={notifyIcon}
+              alt="Notify Icon"
+              className={styles.notifyIcon}
+              style={{ marginLeft: "120px" }}
+            />
+          </div>
+          <div style={{ marginTop: "20px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "5px",
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: "#FFE8EE",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "5px",
+                  marginRight: "5px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src={todayTopicIcon}
+                  alt="Scored Icon"
+                  style={{ width: "15px", height: "15px" }}
+                />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: 500,
+                    marginRight: "15px",
+                  }}
+                >
+                  Today - Topic
+                </span>
+                <span
+                  style={{
+                    fontSize: "10px",
+                    color: "#9696BB",
+                    marginTop: "3px",
+                  }}
+                >
+                  23 Jan 2024, Tuesday
+                </span>
+              </div>
+            </div>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          marginTop: "30px",
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "#E4EBFF",
-            width: "30px",
-            height: "30px",
-            borderRadius: "5px",
-            marginRight: "5px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <img
-            src={subTopicIcon}
-            alt="Time Spent Icon"
-            style={{ width: "17px", height: "13px" }}
-          />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <span style={{ fontSize: "15px", fontWeight: 500 }}>
-            Topic - Sub Topic Title
-          </span>
-          <span
-            style={{
-              fontSize: "10px",
-              color: "#9696BB",
-              marginTop: "3px",
-              marginRight: "30px",
-            }}
-          >
-            24 Jan 2024, Wednesday
-          </span>
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          marginTop: "30px",
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "#E4EBFF",
-            width: "30px",
-            height: "30px",
-            borderRadius: "5px",
-            marginRight: "5px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <img
-            src={subTopicIcon}
-            alt="Time Spent Icon"
-            style={{ width: "17px", height: "13px" }}
-          />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <span style={{ fontSize: "15px", fontWeight: 500 }}>
-            Topic - Sub Topic Title
-          </span>
-          <span
-            style={{
-              fontSize: "10px",
-              color: "#9696BB",
-              marginTop: "3px",
-              marginRight: "30px",
-            }}
-          >
-            24 Jan 2024, Wednesday
-          </span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: "30px",
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: "#E4EBFF",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "5px",
+                  marginRight: "5px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src={subTopicIcon}
+                  alt="Time Spent Icon"
+                  style={{ width: "17px", height: "13px" }}
+                />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{ fontSize: "15px", fontWeight: 500 }}>
+                  Topic - Sub Topic Title
+                </span>
+                <span
+                  style={{
+                    fontSize: "10px",
+                    color: "#9696BB",
+                    marginTop: "3px",
+                    marginRight: "30px",
+                  }}
+                >
+                  24 Jan 2024, Wednesday
+                </span>
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: "30px",
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: "#E4EBFF",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "5px",
+                  marginRight: "5px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src={subTopicIcon}
+                  alt="Time Spent Icon"
+                  style={{ width: "17px", height: "13px" }}
+                />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{ fontSize: "15px", fontWeight: 500 }}>
+                  Topic - Sub Topic Title
+                </span>
+                <span
+                  style={{
+                    fontSize: "10px",
+                    color: "#9696BB",
+                    marginTop: "3px",
+                    marginRight: "30px",
+                  }}
+                >
+                  24 Jan 2024, Wednesday
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
   );
 };
 

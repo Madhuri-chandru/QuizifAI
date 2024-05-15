@@ -6,7 +6,7 @@
    
   .searchIconContainer {
     position: relative;
-    top: -22px; 
+   
     margin-left: 10px;
   }
   .body {
@@ -152,6 +152,7 @@ text-align: left;
     display: flex;
     flex-direction: column;
     position: relative;
+    gap: 20px;
   }
   
   .contentWrapper {
@@ -258,7 +259,7 @@ line-height: 30px;
 letter-spacing: 0em;
 text-align: left;
 margin-left: 40px;
-
+margin-top: 30px;
   }
   
   /*.latestResult {
@@ -336,6 +337,7 @@ line-height: 23px;
 letter-spacing: 0em;
 text-align: left;
 color: #343452;
+align-items:center;
   }
   
 
@@ -739,13 +741,37 @@ text-align: left;
     font-size: 12px; 
   }
   
+  .inputGroup select::option {
+    font-family: "Inter";
+  }
   
+  /* .inputGroup select option {
+    color: #718EBF; 
+  } */
+  
+  .inputGroup select option {
+    font-size: 12px; 
+  }
+  .SelectGender{
+    color: #718EBF; 
+  }
   
   .inputGroup input {
     width: 150px;
     height: 33px;
     padding: 8px;
+font-size:12px;
     border-radius: 10px;
+    border: 1px solid #DFEAF2
+  }
+
+  .inputGroup select {
+    width: 150px;
+    height: 33px;
+    padding:5px;
+    font-size: 12px; 
+    border-radius: 10px;
+
     border: 1px solid #DFEAF2
   }
   .customButton {

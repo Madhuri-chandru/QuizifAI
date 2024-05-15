@@ -679,7 +679,7 @@ export default function quiztype() {
     if (numQuestions <= 0 || duration <= 0) {
       return 0;
     }
-    return Math.ceil(duration / numQuestions);
+    return Math.ceil(duration / numQuestions) * 60;
   };
   return (
     <>
@@ -1358,10 +1358,8 @@ export default function quiztype() {
         />
       ) : (
         // Each question has different time
-        <input
-        type="number"
-        placeholder="Duration"
-        className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[10px] font-normal"
+        <select
+        className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[2px] font-normal"
         value={questionDuration}
         onChange={(e) => {
           const newQuestionDuration = parseInt(e.target.value);
@@ -1375,7 +1373,11 @@ export default function quiztype() {
           });
           setQuestions(updatedQuestions);
         }}
-      />
+      >
+        {[...Array(60)].map((_, index) => ( // Create options for 10 to 600 seconds
+          <option key={index} value={(index + 1) * 5}>{(index + 1) * 5} seconds</option>
+        ))}
+      </select>
         
       )}
        </div>

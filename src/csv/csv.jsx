@@ -1199,7 +1199,7 @@ export default function quiztype() {
               </div>
             </div>
 
-            <div className="w-[140.68px] h-[37.09px] absolute top-[120px] left-[780.43px] rounded-[10px] bg-[#1E4DE9]">
+            <div className="w-[140.68px] h-[37.09px] absolute top-[120px] left-[1135.43px] rounded-[10px] bg-[#1E4DE9]">
               <label
                 htmlFor="fileInput"
                 className="font-Poppins font-medium text-[15px] leading-[22.5px] flex justify-start px-4 py-2 text-white cursor-pointer"
@@ -1331,7 +1331,7 @@ export default function quiztype() {
               className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[10px] font-normal"
               value={question.question_duration}
               onChange={(e) => {
-                const value = parseInt(e.target.value);
+                const value = parseInt(e.target.value) * 60 ;
                 const updatedQuestions = [...questions];
                 updatedQuestions[questionIndex].question_duration = value;
                 setQuestions(updatedQuestions);
