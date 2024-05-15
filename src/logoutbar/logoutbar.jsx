@@ -2,6 +2,7 @@
 
 import React from "react";
 //import Image from "next/image";
+import { useNavigate } from "react-router-dom";
 import styles from "./dashboard.module.css";
 import logoutArrowIcon from "../assets/Images/images/dashboard/logoutArrow1.png";
 import user2Icon from "../assets/Images/images/dashboard/user2.png";
@@ -18,6 +19,7 @@ const currentValue1 = 50;
   const currentValue2 = 30; 
   const maxValue2 = 80; 
 
+
 const BasicProgressBar = ({ currentValue, maxValue }) => (
     <progress
       value={currentValue}
@@ -27,21 +29,32 @@ const BasicProgressBar = ({ currentValue, maxValue }) => (
       {currentValue}%
     </progress>
   );
+
   
 
 const LogoutBar = () => {
+  const navigate = useNavigate();
+  const handleBackToLogin = () => {
+    navigate("/login");
+  };
   return (
     <div className={styles.logout}>
         <div style={{ marginTop: "40px", display: "flex", alignItems: "center" , marginLeft:"20px"}}>
   <span style={{ marginRight: "10px" }}>Logout</span>
-  <img
-    src={logoutArrowIcon}
-    alt="Logout Icon"
-    style={{ width: "30px", height: "20px", marginLeft:"100px" }}
-  />
-  </div>
 
+<div>
+<img
+    src={logoutArrowIcon}
+    onClick={handleBackToLogin}
+    alt="Logout Icon"
+    style={{ width: "30px", height: "20px", marginLeft:"100px",cursor:"pointer" }}
+  />
+</div>
+ 
+
+  </div>
         <div style={{ position: "relative", marginTop: "20px" }}>
+          
         <img
           src={user2Icon}
           alt="Background Image"
