@@ -15,7 +15,7 @@ import Edit_button from "../../public/images/dashboard/edit-button.png";
 import Attempt1 from "../../public/images/dashboard/Attempt1.png";
 import NoOfQuestion from "../../public/images/dashboard/NoOfQuestion.png";
 import Easy from "../../public/images/dashboard/Easy.png";
-import Timer from "../../public/images/dashboard/Timer.png";
+// import Timer from "../../public/images/dashboard/Timer.png";
 import Clock from "../../public/images/dashboard/Clock.png";
 // import Timer from "../../public/images/dashboard/Timer.png";
 import moreArrow from "../../src/assets/Images/images/dashboard/moreArrow.png";
@@ -723,13 +723,13 @@ const Dashboard = () => {
                     {latestquizzes[2]?.number_of_questions}
                   </span>
                   <span className="flex pl-[1px] pt-[5px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                    <img
+                    {/* <img
                       className="pb-[1px] mr-[4px] relative left-[1px] "
                       src={Timer}
                       alt="Time Icon"
                       width={10}
                       height={5}
-                    />{" "}
+                    />{" "} */}
                     {latestquizzes[2]?.quiz_duration}
                   </span>
                   <span className="flex pt-1 -mt-[0.5px] gap-[5px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
@@ -839,13 +839,13 @@ const Dashboard = () => {
                     {latestquizzes[3]?.number_of_questions}
                   </span>
                   <span className="flex pl-[1px] pt-[5px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                    <img
+                    {/* <img
                       className="pb-[1px] mr-[4px] relative left-[1px] "
                       src={Timer}
                       alt="Time Icon"
                       width={10}
                       height={5}
-                    />{" "}
+                    />{" "} */}
                     {latestquizzes[3]?.quiz_duration}
                   </span>
                   <span className="flex pt-1 -mt-[0.5px] gap-[5px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
