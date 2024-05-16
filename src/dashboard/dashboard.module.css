@@ -98,6 +98,7 @@ border: none;
   /* margin-right: -50px; */
 }
 .title {
+  font-size: 10px;
   color: #002366;
   padding: 5px;
   margin-top: 20px;
@@ -106,6 +107,8 @@ border: none;
   margin-top: 40px;
   margin-left: 10px;
  padding-left: -10px;
+ text-decoration: underline;
+ text-underline-offset: 2.5px;
  /* margin-top: 50px !important; */
  padding-right: 60px;
   /* padding-top: 10px;  */
@@ -231,12 +234,12 @@ margin-left: 20px;
 }
 
 .card {
-  width: 243px;
+  width: 240px;
   height: 120px;
   background-color: #F5F5F5;
   font-weight: 600 ;
   margin: 5px;
-  margin-left: 10px;
+  margin-left: 13px;
   font-size: 10px;
   border-radius: 10px;
   
@@ -343,10 +346,9 @@ text-align: left;
   height: 3cqmin; 
   font-size: 8px;
   padding-left: 10px;
-  padding-top: 20px;
-  font-weight: 400px;
+  font-weight: 100px;
   margin-left: 5px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .titlename{
@@ -358,13 +360,26 @@ padding-top: 10px;
   font-weight: 400; 
 
 }
-
+.infoIcons{
+  border-radius: 5px;
+  height: 50px;
+  padding-top: 6px;
+  font-size: 8px;
+  padding-top: 2px;
+  margin-top: -17px;
+  margin-left: -73px;
+  position: absolute;
+  background-color: whitesmoke;
+  clip-path: polygon(0% 0%, 80% 0, 81% 16%, 95% 26%, 81% 34%, 81% 100%, 0 100%);
+}
 
 .additionalInfo {
   display: flex;
   flex-direction: column; 
+  position: relative;
+  top: 16px;
   /* margin-top: -80px; */
-  margin-left: 180px;
+  margin-left: 175px;
   font-family: Poppins;
 font-size: 8px;
 font-weight: 400;
@@ -424,7 +439,8 @@ margin-top: -60px;
 .iconContainer {
   display: flex;
   justify-content: space-between; 
-  margin-top: 5px;
+  margin-top: -18px;
+  margin-left: 210px;
 }
 
 .iconContainer img {
