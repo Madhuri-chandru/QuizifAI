@@ -363,13 +363,14 @@ padding-top: 10px;
 .infoIcons{
   border-radius: 5px;
   height: 50px;
+  width: 70px;
   padding-top: 6px;
   font-size: 8px;
   padding-top: 2px;
   margin-top: -17px;
-  margin-left: -73px;
+  margin-left: -92px;
   position: absolute;
-  background-color: whitesmoke;
+  background-color: #e2e8f0;
   clip-path: polygon(0% 0%, 80% 0, 81% 16%, 95% 26%, 81% 34%, 81% 100%, 0 100%);
 }
 
@@ -441,6 +442,11 @@ margin-top: -60px;
   justify-content: space-between; 
   margin-top: -18px;
   margin-left: 210px;
+}
+.iconContainers{
+  z-index: 40px;
+  padding-left: 36px;
+  border-radius: 10px;
 }
 
 .iconContainer img {
