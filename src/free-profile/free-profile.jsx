@@ -74,6 +74,10 @@ const FreeProfile = () => {
   const [notAttemptedQuizzes, setNotAttemptedQuizzes] = useState([]);
   const [attemptedQuizzes, setAttemptedQuizzes] = useState([]);
   const [topScoredQuizzes, setTopScoredQuizzes] = useState([]);
+  const [userId, setUserId] = useState(localStorage.getItem('user_id'));
+  const [profileData, setProfileData] = useState(null);
+  const [profession, setProfession] = useState('');
+
 
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
@@ -93,17 +97,18 @@ const FreeProfile = () => {
 
   const handleSubmit = async () => {
     const payload = {
-      user_id: 1,
+      user_id: userId,
       first_name: firstName,
       middle_name: middleName,
       last_name: lastName,
       user_email: email,
+      
       user_phone_number: parseInt(mobileNumber === "" ? "0" : mobileNumber),
       gender: gender,
       date_of_birth: dob,
       user_address_line_1: address1,
       user_address_line_2: address2,
-      occupation: "student",
+      occupation: profession,
       preferred_login_method: preferredLoginMethod,
       access_key:accesskey,
       user_role: 'quiz user',
@@ -112,9 +117,10 @@ const FreeProfile = () => {
       active_flag: true,
       user_address_id: 0,
       user_location_id: 0,
-      access_key: 'string',
+      access_key: null,
       otp: Otp ,
-    };
+      display_name:profession,
+   };
 
     try {
       const response = await fetch(
@@ -140,7 +146,49 @@ const FreeProfile = () => {
     }
   };
 
+  useEffect(() => {
+    // Fetch user_id from local storage
+    const userId = localStorage.getItem('user_id');
 
+    // Make a POST request to the API endpoint
+    fetch('https://quizifai.com:8010/get_prfl_dtls', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+      },
+      body: JSON.stringify({ user_id: userId })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle successful response
+      setProfileData(data);
+      setFirstName(data.data.first_name);
+      setMiddleName(data.data.middle_name);
+      setLastName(data.data.last_name);
+      setGender(data.data.gender);
+      setProfession(data.data.occupation_name);
+      setDob(data.data.date_of_birth);
+
+      setPostalCode(data.data.pin_code);
+      setAddress1(data.data.user_address_line_1);
+      setAddress2(data.data.user_address_line_2);
+      setCity(data.data.location_name);
+      setState(data.data.state_name);
+      setCountry(data.data.country_name);
+      setEmail(data.data.user_email);
+      setMobileNumber(data.data.user_phone_number);
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('Error fetching profile data:', error);
+    });
+  }, []);
   useEffect(() => {
  
     const fetchQuizData = async () => {
@@ -214,6 +262,13 @@ const FreeProfile = () => {
       setErrorMessage("Failed to submit form. Please try again.");
     }
   };
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    // Retrieve user name from local storage
+    const storedUserName = localStorage.getItem('user_name');
+    setUserName(storedUserName);
+  }, []);
   return (
     <div className={styles.container}>
       {/*<Head>
@@ -226,7 +281,7 @@ const FreeProfile = () => {
       <div className={styles.mainContent}>
         <div className={styles.header}>
           {/* Header content */}
-          <p>Welcome Username</p>
+          <p>Welcome {userName}</p>
           <div className={styles.headerRight}>
             <div>{getFormattedDate()}</div>
             <div className={styles.searchIconContainer}>
@@ -252,9 +307,9 @@ const FreeProfile = () => {
             <div className={styles.contentContainer}>
               <div
                 className={styles.textContainer}
-                style={{ marginLeft: "150px", marginTop: "-70px" }}
+                style={{ marginLeft: "150px", marginTop: "-105px" }}
               >
-                <div className={styles.textLine1}>Profession </div>
+                <div className={styles.textLine1}>{profession} </div>
                 <div className={styles.textLine2}>
                   (Plan of the Subscription){" "}
                 </div>
@@ -349,13 +404,16 @@ const FreeProfile = () => {
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
               >
-                <option  className={styles.SelectGender} value="">Select Gender</option>
+                {/* <option  className={styles.SelectGender} value="">Select Gender</option> */}
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
             </div>
           </div>
 
+       
+
+          <div className={styles.inputRow}>
           <div className={styles.inputGroup}>
             <label htmlFor="dob">Date of Birth</label>
             <input
@@ -366,18 +424,16 @@ const FreeProfile = () => {
               onChange={(e) => setDob(e.target.value)}
             />
           </div>
-
-          <div className={styles.inputRow}>
             <div className={styles.inputGroup}>
               <label htmlFor="postalCode">Postal Code</label>
               <input
                 type="text"
                 id="postalCode"
                 placeholder="Postal Code"
-                value={pincode}
-                onChange={(e) => setpincode(e.target.value)}
+                value={postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
               />
-                     <div
+                     {/* <div
                     className={styles.searchicon}
                     onClick={handleSubmit1}
                     style={{
@@ -396,7 +452,7 @@ const FreeProfile = () => {
                         "0px center, right 10px center, right 40px center",
                       cours: "pointer",
                     }}
-                  ></div>
+                  ></div> */}
             </div>
             <div className={styles.inputGroup}>
               <label htmlFor="address1">Address Line 1</label>
@@ -454,7 +510,40 @@ const FreeProfile = () => {
           </div>
 
           <div className={styles.toggleButtonsContainer}>
-            <button
+            {/* <button
+              className={`${styles.toggleButton} ${
+                selectedButton === "Email" && styles.selected
+              }`}
+              onClick={() => handleButtonClick("Email")}
+            >
+              <img src={EmailIcon} alt="Email Icon" className={styles.icon1} />{" "}
+              Email
+            </button> */}
+            {/* <button
+          className={`${styles.toggleButton} ${selectedButton === 'Gmail' && styles.selected}`}
+          onClick={() => handleButtonClick('Gmail')}
+        >
+         <img src={GmailIcon} alt="Gmail Icon" className={styles.icon2} /> Gmail
+        </button> */}
+            {/* <button
+              className={`${styles.toggleButton} ${
+                selectedButton === "Mobile" && styles.selected
+              }`}
+              onClick={() => handleButtonClick("Mobile")}
+            >
+              <img
+                src={MobileIcon}
+                alt="Mobile Icon"
+                className={styles.icon3}
+              />{" "}
+              Mobile
+            </button> */}
+          </div>
+
+          <div className={styles.inputRow}>
+            <div className={styles.inputGroup}>
+              {/* <label htmlFor="email">Email</label> */}
+              <button
               className={`${styles.toggleButton} ${
                 selectedButton === "Email" && styles.selected
               }`}
@@ -463,13 +552,17 @@ const FreeProfile = () => {
               <img src={EmailIcon} alt="Email Icon" className={styles.icon1} />{" "}
               Email
             </button>
-            {/* <button
-          className={`${styles.toggleButton} ${selectedButton === 'Gmail' && styles.selected}`}
-          onClick={() => handleButtonClick('Gmail')}
-        >
-         <img src={GmailIcon} alt="Gmail Icon" className={styles.icon2} /> Gmail
-        </button> */}
-            <button
+              <input
+                type="email"
+                id="email"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              {/* <label htmlFor="mobileNumber">Mobile Number</label> */}
+              <button
               className={`${styles.toggleButton} ${
                 selectedButton === "Mobile" && styles.selected
               }`}
@@ -482,21 +575,6 @@ const FreeProfile = () => {
               />{" "}
               Mobile
             </button>
-          </div>
-
-          <div className={styles.inputRow}>
-            <div className={styles.inputGroup}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className={styles.inputGroup}>
-              <label htmlFor="mobileNumber">Mobile Number</label>
               <input
                 type="tel"
                 id="mobileNumber"
@@ -505,8 +583,8 @@ const FreeProfile = () => {
                 onChange={(e) => setMobileNumber(e.target.value)}
               />
               <div className={styles.buttonContainer}>
-                <button className={styles.customButton} onClick={handleSubmit}>Verify</button>
-                <button className={styles.customButton}>Edit</button>
+                <button className={styles.customButton} >Verify</button>
+                <button className={styles.customButton} onClick={handleSubmit}>Edit</button>
               </div>
             </div>
           </div>
