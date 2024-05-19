@@ -57,6 +57,21 @@ const Dashboard = () => {
   const [averageScorePercentage, setAverageScorePercentage] = useState(0);
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const [isNavbarOpen1, setIsNavbarOpen1] = useState(false);
+  const [isNavbarOpen2, setIsNavbarOpen2] = useState(false);
+  const [isNavbarOpen3, setIsNavbarOpen3] = useState(false);
+  const [isNavbarOpen4, setIsNavbarOpen4] = useState(false);
+  const [isNavbarOpen5, setIsNavbarOpen5] = useState(false);
+  const [isNavbarOpen6, setIsNavbarOpen6] = useState(false);
+  const [isNavbarOpen7, setIsNavbarOpen7] = useState(false);
+  const [isNavbarOpen8, setIsNavbarOpen8] = useState(false);
+
+  const [isNavbarOpen11, setIsNavbarOpen11] = useState(false);
+  const [isNavbarOpen12, setIsNavbarOpen12] = useState(false);
+  const [isNavbarOpen13, setIsNavbarOpen13] = useState(false);
+  const [isNavbarOpen14, setIsNavbarOpen14] = useState(false);
+  const [isNavbarOpen15, setIsNavbarOpen15] = useState(false);
+  const [isNavbarOpen16, setIsNavbarOpen16] = useState(false);
 
   const [getMoreQuizzes, setGetMoreQuizzes] = useState(false);
 
@@ -142,6 +157,50 @@ const Dashboard = () => {
   const toggleNavbar = () => {
     setIsNavbarOpen((prevState) => !prevState);
   };
+  const toggleNavbar1 = () => {
+    setIsNavbarOpen1((prevState) => !prevState);
+  };
+  const toggleNavbar2 = () => {
+    setIsNavbarOpen2((prevState) => !prevState);
+  };
+  const toggleNavbar3 = () => {
+    setIsNavbarOpen3((prevState) => !prevState);
+  };
+  const toggleNavbar4 = () => {
+    setIsNavbarOpen4((prevState) => !prevState);
+  };
+  const toggleNavbar5 = () => {
+    setIsNavbarOpen5((prevState) => !prevState);
+  };
+  const toggleNavbar6 = () => {
+    setIsNavbarOpen6((prevState) => !prevState);
+  };
+  const toggleNavbar7 = () => {
+    setIsNavbarOpen7((prevState) => !prevState);
+  };
+  const toggleNavbar8 = () => {
+    setIsNavbarOpen8((prevState) => !prevState);
+  };
+  // -------------------------------------------------
+const toggleNavbar11 = () => {
+  setIsNavbarOpen11((prevState) => !prevState);
+};
+const toggleNavbar12 = () => {
+  setIsNavbarOpen12((prevState) => !prevState);
+};
+const toggleNavbar13 = () => {
+  setIsNavbarOpen13((prevState) => !prevState);
+};
+const toggleNavbar14 = () => {
+  setIsNavbarOpen14((prevState) => !prevState);
+};
+const toggleNavbar15= () => {
+  setIsNavbarOpen15((prevState) => !prevState);
+};
+const toggleNavbar16= () => {
+  setIsNavbarOpen16((prevState) => !prevState);
+};
+
 
   const toggleGetMoreQuizzes = () => {
     setGetMoreQuizzes(true);
@@ -189,12 +248,7 @@ const Dashboard = () => {
 
   return (
     <div className={styles.container}>
-      {/* <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head> */}
+      
       <Navigation />
       <div className={styles.mainContent}>
         <div className={styles.header}>
@@ -245,7 +299,7 @@ const Dashboard = () => {
                   <span
                     style={{
                       marginLeft: "10px",
-                      width: "130px",
+                      width: "125px",
                       height: "8px",
                       fontSize: "8px",
                       marginTop: "7px",
@@ -283,7 +337,7 @@ const Dashboard = () => {
                   <span
                     style={{
                       marginLeft: "10px",
-                      width: "130px",
+                      width: "125px",
                       height: "8px",
                       fontSize: "8px",
                       marginTop: "7px",
@@ -448,9 +502,9 @@ const Dashboard = () => {
           <div className={styles.infoCards}>
             {/* Info cards content */}
             <div className={styles.card} style={{ paddingTop: "8px" }}>
-              <span className={styles.title}>
+              <p className={styles.title}>
                 {latestquizzes[0]?.quiz_name}
-              </span>
+              </p>
 
               <div className={styles.iconContainer}>
                 <div className="z-40 mb-[2px] pl-[36px] font-normal rounded ">
@@ -460,7 +514,7 @@ const Dashboard = () => {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-4 h-4 -ml-[27px]  cursor-pointer rounded-lg hover:bg-slate-200"
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
                     onClick={toggleNavbar}
                   >
                     <path
@@ -473,7 +527,9 @@ const Dashboard = () => {
 
                   {isNavbarOpen && (
                     <div className={styles.infoIcons}>
-                      <img
+                      {/* start */}
+                     <div className={styles.start}>
+                     <img
                         className="absolute h-[1px] w-[1px] left-[6px] top-1"
                         src={Start_button}
                         alt="Play icon"
@@ -481,7 +537,10 @@ const Dashboard = () => {
                       <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
                         Start
                       </span>
-                      <img
+                     </div>
+                     {/* Edit  */}
+                     <div className={styles.start}>
+                     <img
                         className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
                         src={Edit_button}
                         alt="Play icon"
@@ -489,6 +548,9 @@ const Dashboard = () => {
                       <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
                         Edit
                       </span>
+                     </div>
+                      {/* Leaderboard */}
+                      <div className={styles.start}>
                       <img
                         className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
                         src={leaderboard_button}
@@ -497,7 +559,11 @@ const Dashboard = () => {
                       <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
                         Leaderboard 
                       </span>
-                      <img
+                      </div>
+                      {/* Share */}
+                      
+                     <div className={styles.start}>
+                     <img
                         className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
                         src={Share_button}
                         alt="Play icon"
@@ -505,27 +571,28 @@ const Dashboard = () => {
                       <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
                         Share
                       </span>
+                     </div>
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="flex mt-1 pl-[15px] text-[9px]">
-                <span className="text-nowrap font-normal cursor-pointer">
+              <div className={styles.category} >
+
+                <span className={styles.category1}>
                   {latestquizzes[0]?.category}
                 </span>
-                <p className="relative px-[4px] font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer ">
+                <p className="px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
                   {latestquizzes[0]?.sub_category}
                 </span>
               </div>
 
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[7.5px]">
+              <div className={styles.description}>
+                <span>
                   {latestquizzes[0]?.quiz_description}
                 </span>
               </div>
-
               <div
                 className={styles.additionalInfo}
                 style={{ marginTop: "23px" }}
@@ -587,41 +654,26 @@ const Dashboard = () => {
               <span className={styles.title}>
                 {latestquizzes[1]?.quiz_name}
               </span>
-
-              <div className="flex mt-1 pl-[15px] text-[9px]">
-                <span className="text-nowrap font-normal cursor-pointer">
-                  {latestquizzes[1]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer">
-                  {latestquizzes[1]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[7.5px]">
-                  {latestquizzes[1]?.quiz_description}
-                </span>
-              </div>
-
+ 
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-3 h-2 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar1}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
+                  {isNavbarOpen1 && (
                    <div className={styles.infoIcons}>
                    <img
                      className="absolute h-[1px] w-[1px] left-[6px] top-1"
@@ -660,6 +712,22 @@ const Dashboard = () => {
                 </div>
               </div>
 
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {latestquizzes[1]?.category}
+                </span>
+                <p className="px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {latestquizzes[1]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span>
+                  {latestquizzes[1]?.quiz_description}
+                </span>
+              </div>
+
               <div
                 className={styles.additionalInfo}
                 style={{ marginTop: "23px" }}
@@ -668,8 +736,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -678,10 +746,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{latestquizzes[1]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -690,8 +759,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {latestquizzes[1]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -700,8 +770,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {latestquizzes[1]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -717,62 +788,78 @@ const Dashboard = () => {
               <span className={styles.title}>
                 {latestquizzes[2]?.quiz_name}
               </span>
-              <div className="flex mt-1 pl-[15px] ">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {latestquizzes[2]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {latestquizzes[2]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal">
-                  {latestquizzes[2]?.quiz_description}
-                </span>
-              </div>
 
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar2}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen2 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen2 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
               </div>
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {latestquizzes[2]?.category}
+                </span>
+                <p className="px-1 font-normal">|</p>
+                <span className={styles.category1}>
+                  {latestquizzes[2]?.sub_category}
+                </span>
+              </div>
 
+              <div className={styles.description}>
+                <span >
+                  {latestquizzes[2]?.quiz_description}
+                </span>
+              </div>
               <div
                 className={styles.additionalInfo}
                 style={{ marginTop: "23px" }}
@@ -781,8 +868,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -791,10 +878,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{latestquizzes[2]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -803,8 +891,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {latestquizzes[2]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -813,8 +902,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {latestquizzes[2]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -830,63 +920,79 @@ const Dashboard = () => {
               <span className={styles.title}>
                 {latestquizzes[3]?.quiz_name}
               </span>
-
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {latestquizzes[3]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {latestquizzes[3]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {latestquizzes[3]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar3}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen3 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen3 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
               </div>
+          
 
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {latestquizzes[3]?.category}
+                </span>
+                <p className="px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {latestquizzes[3]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span>
+                  {latestquizzes[3]?.quiz_description}
+                </span>
+              </div>
               <div
                 className={styles.additionalInfo}
                 style={{ marginTop: "23px" }}
@@ -895,8 +1001,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -905,10 +1011,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{latestquizzes[3]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -917,8 +1024,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {latestquizzes[3]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -927,8 +1035,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {latestquizzes[3]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -939,67 +1048,83 @@ const Dashboard = () => {
                   {latestquizzes[3]?.complexity}
                 </span>
               </div>
+ 
             </div>
             <div className={styles.card} style={{ paddingTop: "8px" }}>
               <span className={styles.title}>
                 {latestquizzes[4]?.quiz_name}
               </span>
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {latestquizzes[4]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {latestquizzes[4]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {latestquizzes[4]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar4}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen4 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen4 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
               </div>
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {latestquizzes[4]?.category}
+                </span>
+                <p className="px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {latestquizzes[4]?.sub_category}
+                </span>
+              </div>
 
+              <div className={styles.description}>
+                <span>
+                  {latestquizzes[4]?.quiz_description}
+                </span>
+              </div>
               <div
                 className={styles.additionalInfo}
                 style={{ marginTop: "23px" }}
@@ -1008,8 +1133,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -1018,10 +1143,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{latestquizzes[4]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -1030,8 +1156,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {latestquizzes[4]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -1040,8 +1167,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {latestquizzes[4]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -1057,61 +1185,77 @@ const Dashboard = () => {
               <span className={styles.title}>
                 {latestquizzes[5]?.quiz_name}
               </span>
-
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {latestquizzes[5]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {latestquizzes[5]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {latestquizzes[5]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar5}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen5 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen5 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
+              </div>
+
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {latestquizzes[5]?.category}
+                </span>
+                <p className="px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {latestquizzes[5]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span>
+                  {latestquizzes[5]?.quiz_description}
+                </span>
               </div>
 
               <div
@@ -1122,8 +1266,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -1132,10 +1276,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{latestquizzes[5]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -1144,8 +1289,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {latestquizzes[5]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -1154,8 +1300,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {latestquizzes[5]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -1181,114 +1328,132 @@ const Dashboard = () => {
                       className={styles.title} >
                       {latestquizzes[6]?.quiz_name}
                     </span>
-                    <div className="flex mt-1 pl-[15px] font-[8px]">
-                      <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
+                    <div className={styles.iconContainer}>
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar6}
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                    />
+                    {isNavbarOpen6 ? "Close Navbar" : "Open Navbar"}
+                  </svg>
+                  {isNavbarOpen6 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
+                  )}
+                </div>
+              </div>
+                    <div className={styles.category}>
+                      <span className={styles.category1}>
                         {latestquizzes[6]?.category}
                       </span>
-                      <p className="relative px-4 font-normal">|</p>
-                      <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
+                      <p className="px-[2px] font-normal">|</p>
+                      <span className={styles.category1}>
                         {latestquizzes[6]?.sub_category}
                       </span>
                     </div>
 
-                    <div className={styles.infoBox1}>
-                      <span className="h-[50px] w-[50px] font-normal text-[8px]">
+                    <div className={styles.description}>
+                      <span>
                         {latestquizzes[6]?.quiz_description}
                       </span>
                     </div>
-
-                    <div className={styles.iconContainer}>
-                      <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                          onClick={toggleNavbar}
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                          />
-                        </svg>
-                        {isNavbarOpen && (
-                          <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                            <img
-                              className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                              src={Start_button}
-                              alt="Play icon"
-                            />
-                            <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                              Start
-                            </span>
-                            <img
-                              className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                              src={Edit_button}
-                              alt="Play icon"
-                            />
-                            <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                              Edit
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
                     <div
-                      className={styles.additionalInfo}
-                      style={{ marginTop: "23px" }}
-                    >
-                      <div
-                        className={styles.infoIcon}
-                        style={{ marginTop: "20px" }}
-                      ></div>
-                      <div className="">
-                        <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                          <img
-                            className="h-[15px] w-[13px] pl-[3px] pb-1"
-                            src={Attempt1}
-                            alt="Attempts Icon"
-                            width={10}
-                            height={10}
-                          />
-                          <p>{latestquizzes[6]?.quiz_attempts}</p>
-                        </div>
-                      </div>
+                className={styles.additionalInfo}
+                style={{ marginTop: "23px" }}
+              >
+                <div
+                  className={styles.infoIcon}
+                  style={{ marginTop: "20px" }}
+                ></div>
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
+                    <img
+                      className="h-[15px] w-[13px] pl-[3px] pb-1"
+                      src={Attempt1}
+                      alt="Attempts Icon"
+                      width={10}
+                      height={10}
+                    />
+                    <p>{latestquizzes[6]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
+                  </div>
+                </div>
 
-                      <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
-                          src={NoOfQuestion}
-                          alt="Number of question Icon"
-                          width={15}
-                          height={10}
-                        />{" "}
-                        {latestquizzes[6]?.number_of_questions}
-                      </span>
-                      <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="pb-[1px] mr-[1px] relative left-[3px] "
-                          src={Clock}
-                          alt="Time Icon"
-                          width={14}
-                          height={14}
-                        />{" "}
-                        {latestquizzes[6]?.quiz_duration}
-                      </span>
-                      <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
-                          src={Easy}
-                          alt="Challenge Icon"
-                          width={15}
-                          height={9}
-                        />{" "}
-                        {latestquizzes[6]?.complexity}
-                      </span>
-                    </div>
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
+                  <img
+                    className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
+                    src={NoOfQuestion}
+                    alt="Number of question Icon"
+                    width={15}
+                    height={10}
+                  />{" "}
+                  {latestquizzes[6]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
+                </span>
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
+                  <img
+                    className="pb-[1px] mr-[1px] relative left-[3px] "
+                    src={Clock}
+                    alt="Time Icon"
+                    width={14}
+                    height={14}
+                  />{" "}
+                  {latestquizzes[6]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
+                </span>
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
+                  <img
+                    className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
+                    src={Easy}
+                    alt="Challenge Icon"
+                    width={15}
+                    height={9}
+                  />{" "}
+                  {latestquizzes[6]?.complexity}
+                </span>
+              </div>
                   </div>
 
                   <div
@@ -1299,114 +1464,132 @@ const Dashboard = () => {
                       className={styles.title} >
                       {latestquizzes[7]?.quiz_name}
                     </span>
-                    <div className="flex mt-1 pl-[15px] font-[8px]">
-                      <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
+                    <div className={styles.iconContainer}>
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar7}
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                    />
+                    {isNavbarOpen7 ? "Close Navbar" : "Open Navbar"}
+                  </svg>
+                  {isNavbarOpen7 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
+                  )}
+                </div>
+              </div>
+                    <div className={styles.category}>
+                      <span className={styles.category1}>
                         {latestquizzes[7]?.category}
                       </span>
-                      <p className="relative px-4 font-normal">|</p>
-                      <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
+                      <p className="px-[2px] font-normal">|</p>
+                      <span className={styles.category1}>
                         {latestquizzes[7]?.sub_category}
                       </span>
                     </div>
 
-                    <div className={styles.infoBox1}>
-                      <span className="h-[50px] w-[50px] font-normal text-[8px]">
+                    <div className={styles.description}>
+                      <span>
                         {latestquizzes[7]?.quiz_description}
                       </span>
                     </div>
-
-                    <div className={styles.iconContainer}>
-                      <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                          onClick={toggleNavbar}
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                          />
-                        </svg>
-                        {isNavbarOpen && (
-                          <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                            <img
-                              className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                              src={Start_button}
-                              alt="Play icon"
-                            />
-                            <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                              Start
-                            </span>
-                            <img
-                              className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                              src={Edit_button}
-                              alt="Play icon"
-                            />
-                            <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                              Edit
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
                     <div
-                      className={styles.additionalInfo}
-                      style={{ marginTop: "23px" }}
-                    >
-                      <div
-                        className={styles.infoIcon}
-                        style={{ marginTop: "20px" }}
-                      ></div>
-                      <div className="">
-                        <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                          <img
-                            className="h-[15px] w-[13px] pl-[3px] pb-1"
-                            src={Attempt1}
-                            alt="Attempts Icon"
-                            width={10}
-                            height={10}
-                          />
-                          <p>{latestquizzes[7]?.quiz_attempts}</p>
-                        </div>
-                      </div>
+                className={styles.additionalInfo}
+                style={{ marginTop: "23px" }}
+              >
+                <div
+                  className={styles.infoIcon}
+                  style={{ marginTop: "20px" }}
+                ></div>
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
+                    <img
+                      className="h-[15px] w-[13px] pl-[3px] pb-1"
+                      src={Attempt1}
+                      alt="Attempts Icon"
+                      width={10}
+                      height={10}
+                    />
+                    <p>{latestquizzes[7]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
+                  </div>
+                </div>
 
-                      <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
-                          src={NoOfQuestion}
-                          alt="Number of question Icon"
-                          width={15}
-                          height={10}
-                        />{" "}
-                        {latestquizzes[7]?.number_of_questions}
-                      </span>
-                      <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="pb-[1px] mr-[1px] relative left-[3px] "
-                          src={Clock}
-                          alt="Time Icon"
-                          width={14}
-                          height={14}
-                        />{" "}
-                        {latestquizzes[7]?.quiz_duration}
-                      </span>
-                      <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
-                          src={Easy}
-                          alt="Challenge Icon"
-                          width={15}
-                          height={9}
-                        />{" "}
-                        {latestquizzes[7]?.complexity}
-                      </span>
-                    </div>
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
+                  <img
+                    className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
+                    src={NoOfQuestion}
+                    alt="Number of question Icon"
+                    width={15}
+                    height={10}
+                  />{" "}
+                  {latestquizzes[7]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
+                </span>
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
+                  <img
+                    className="pb-[1px] mr-[1px] relative left-[3px] "
+                    src={Clock}
+                    alt="Time Icon"
+                    width={14}
+                    height={14}
+                  />{" "}
+                  {latestquizzes[7]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
+                </span>
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
+                  <img
+                    className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
+                    src={Easy}
+                    alt="Challenge Icon"
+                    width={15}
+                    height={9}
+                  />{" "}
+                  {latestquizzes[7]?.complexity}
+                </span>
+              </div>
                   </div>
 
                   <div
@@ -1417,114 +1600,132 @@ const Dashboard = () => {
                       className={styles.title}>
                       {latestquizzes[8]?.quiz_name}
                     </span>
-                    <div className="flex mt-1 pl-[15px] font-[8px]">
-                      <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
+                    <div className={styles.iconContainer}>
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar8}
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                    />
+                    {isNavbarOpen8 ? "Close Navbar" : "Open Navbar"}
+                  </svg>
+                  {isNavbarOpen8 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
+                  )}
+                </div>
+              </div>
+                    <div className={styles.category}>
+                      <span className={styles.category1}>
                         {latestquizzes[8]?.category}
                       </span>
-                      <p className="relative px-4 font-normal">|</p>
-                      <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
+                      <p className="px-[2px] font-normal">|</p>
+                      <span className={styles.category1}>
                         {latestquizzes[8]?.sub_category}
                       </span>
                     </div>
 
-                    <div className={styles.infoBox1}>
-                      <span className="h-[50px] w-[50px] font-normal text-[8px]">
+                    <div className={styles.description}>
+                      <span>
                         {latestquizzes[8]?.quiz_description}
                       </span>
                     </div>
-
-                    <div className={styles.iconContainer}>
-                      <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                          onClick={toggleNavbar}
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                          />
-                        </svg>
-                        {isNavbarOpen && (
-                          <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                            <img
-                              className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                              src={Start_button}
-                              alt="Play icon"
-                            />
-                            <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                              Start
-                            </span>
-                            <img
-                              className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                              src={Edit_button}
-                              alt="Play icon"
-                            />
-                            <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                              Edit
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
                     <div
-                      className={styles.additionalInfo}
-                      style={{ marginTop: "23px" }}
-                    >
-                      <div
-                        className={styles.infoIcon}
-                        style={{ marginTop: "20px" }}
-                      ></div>
-                      <div className="">
-                        <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                          <img
-                            className="h-[15px] w-[13px] pl-[3px] pb-1"
-                            src={Attempt1}
-                            alt="Attempts Icon"
-                            width={10}
-                            height={10}
-                          />
-                          <p>{latestquizzes[8]?.quiz_attempts}</p>
-                        </div>
-                      </div>
+                className={styles.additionalInfo}
+                style={{ marginTop: "23px" }}
+              >
+                <div
+                  className={styles.infoIcon}
+                  style={{ marginTop: "20px" }}
+                ></div>
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
+                    <img
+                      className="h-[15px] w-[13px] pl-[3px] pb-1"
+                      src={Attempt1}
+                      alt="Attempts Icon"
+                      width={10}
+                      height={10}
+                    />
+                    <p>{latestquizzes[8]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
+                  </div>
+                </div>
 
-                      <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
-                          src={NoOfQuestion}
-                          alt="Number of question Icon"
-                          width={15}
-                          height={10}
-                        />{" "}
-                        {latestquizzes[8]?.number_of_questions}
-                      </span>
-                      <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="pb-[1px] mr-[1px] relative left-[3px] "
-                          src={Clock}
-                          alt="Time Icon"
-                          width={14}
-                          height={14}
-                        />{" "}
-                        {latestquizzes[8]?.quiz_duration}
-                      </span>
-                      <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
-                        <img
-                          className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
-                          src={Easy}
-                          alt="Challenge Icon"
-                          width={15}
-                          height={9}
-                        />{" "}
-                        {latestquizzes[8]?.complexity}
-                      </span>
-                    </div>
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
+                  <img
+                    className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
+                    src={NoOfQuestion}
+                    alt="Number of question Icon"
+                    width={15}
+                    height={10}
+                  />{" "}
+                  {latestquizzes[8]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
+                </span>
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
+                  <img
+                    className="pb-[1px] mr-[1px] relative left-[3px] "
+                    src={Clock}
+                    alt="Time Icon"
+                    width={14}
+                    height={14}
+                  />{" "}
+                  {latestquizzes[8]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
+                </span>
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
+                  <img
+                    className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
+                    src={Easy}
+                    alt="Challenge Icon"
+                    width={15}
+                    height={9}
+                  />{" "}
+                  {latestquizzes[8]?.complexity}
+                </span>
+              </div>
                   </div>
                 </div>
 
@@ -1622,61 +1823,77 @@ const Dashboard = () => {
                 className={styles.title}>
                 {popularquizzes[0]?.quiz_name}
               </span>
-
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[0]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[0]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {popularquizzes[0]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar11}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen11 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen11 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
+              </div>
+
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {popularquizzes[0]?.category}
+                </span>
+                <p className="px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {popularquizzes[0]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span>
+                  {popularquizzes[0]?.quiz_description}
+                </span>
               </div>
 
               <div
@@ -1687,8 +1904,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -1697,10 +1914,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{popularquizzes[0]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -1709,8 +1927,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {popularquizzes[0]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -1719,8 +1938,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {popularquizzes[0]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -1737,60 +1957,76 @@ const Dashboard = () => {
                 className={styles.title}>
                 {popularquizzes[1]?.quiz_name}
               </span>
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[1]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[1]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {popularquizzes[1]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar12}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen12 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen12 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
+              </div>
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {popularquizzes[1]?.category}
+                </span>
+                <p className="px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {popularquizzes[1]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span >
+                  {popularquizzes[1]?.quiz_description}
+                </span>
               </div>
 
               <div
@@ -1801,8 +2037,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -1811,10 +2047,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{popularquizzes[1]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -1823,8 +2060,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {popularquizzes[1]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -1833,8 +2071,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {popularquizzes[1]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -1851,60 +2090,76 @@ const Dashboard = () => {
                 className={styles.title}>
                 {popularquizzes[2]?.quiz_name}
               </span>
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[2]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[2]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {popularquizzes[2]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar13}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen13 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen13 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
+              </div>
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {popularquizzes[2]?.category}
+                </span>
+                <p className="px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {popularquizzes[2]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span>
+                  {popularquizzes[2]?.quiz_description}
+                </span>
               </div>
 
               <div
@@ -1915,8 +2170,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -1925,10 +2180,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{popularquizzes[2]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -1937,8 +2193,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {popularquizzes[2]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -1947,8 +2204,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {popularquizzes[2]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -1965,60 +2223,76 @@ const Dashboard = () => {
                 className={styles.title}>
                 {popularquizzes[3]?.quiz_name}
               </span>
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[3]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[3]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {popularquizzes[3]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar14}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen14 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen14 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
+              </div>
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {popularquizzes[3]?.category}
+                </span>
+                <p className=" px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {popularquizzes[3]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span>
+                  {popularquizzes[3]?.quiz_description}
+                </span>
               </div>
 
               <div
@@ -2029,8 +2303,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -2039,10 +2313,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{popularquizzes[3]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -2051,8 +2326,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {popularquizzes[3]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -2061,8 +2337,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {popularquizzes[3]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -2079,60 +2356,76 @@ const Dashboard = () => {
                 className={styles.title}>
                 {popularquizzes[4]?.quiz_name}
               </span>
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[4]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[4]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {popularquizzes[4]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar15}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen15 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen15 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
+              </div>
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {popularquizzes[4]?.category}
+                </span>
+                <p className=" px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {popularquizzes[4]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span>
+                  {popularquizzes[4]?.quiz_description}
+                </span>
               </div>
 
               <div
@@ -2143,8 +2436,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -2153,10 +2446,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{popularquizzes[4]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -2165,8 +2459,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {popularquizzes[4]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -2175,8 +2470,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {popularquizzes[4]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}
@@ -2193,60 +2489,76 @@ const Dashboard = () => {
                 className={styles.title}>
                 {popularquizzes[5]?.quiz_name}
               </span>
-              <div className="flex mt-1 pl-[15px] font-[8px]">
-                <span className="text-nowrap font-normal cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[5]?.category}
-                </span>
-                <p className="relative px-4 font-normal">|</p>
-                <span className="font-normal  text-nowrap cursor-pointer hover:underline hover:underline-offset-2">
-                  {popularquizzes[5]?.sub_category}
-                </span>
-              </div>
-
-              <div className={styles.infoBox1}>
-                <span className="h-[50px] w-[50px] font-normal text-[8px]">
-                  {popularquizzes[5]?.quiz_description}
-                </span>
-              </div>
-
               <div className={styles.iconContainer}>
-                <div className=" mb-[2px] pl-[36px] font-normal rounded  relative top-6">
-                  <svg
+                <div className="z-40 mb-[2px] pl-[36px] font-normal rounded">
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-4 -ml-[23px]  cursor-pointer hover:bg-slate-200"
-                    onClick={toggleNavbar}
+                    class="w-4 h-4 -ml-[27px] cursor-pointer rounded-lg hover:bg-slate-200"
+                    onClick={toggleNavbar16}
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                     />
+                    {isNavbarOpen16 ? "Close Navbar" : "Open Navbar"}
                   </svg>
-                  {isNavbarOpen && (
-                    <div className=" pl-[6px] text-[8px]  pt-[2px] -mt-[16px] ml-[10px] absolute ">
-                      <img
-                        className="absolute h-[3px] w-[3px] -left-[10px] top-1"
-                        src={Start_button}
-                        alt="Play icon"
-                      />
-                      <span className=" pl-[2px] -ml-[7px] cursor-pointer hover:text-black">
-                        Start
-                      </span>
-                      <img
-                        className="absolute h-[10px] w-[10px]  left-[32px] -ml-2 top-[5px]"
-                        src={Edit_button}
-                        alt="Play icon"
-                      />
-                      <span className=" ml-[15px] absolute top-[1.9px] cursor-pointer hover:text-black">
-                        Edit
-                      </span>
-                    </div>
+                  {isNavbarOpen16 && (
+                   <div className={styles.infoIcons}>
+                   <img
+                     className="absolute h-[1px] w-[1px] left-[6px] top-1"
+                     src={Start_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] pl-[27px] -ml-[9px]  cursor-pointer hover:text-black">
+                     Start
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[15px]"
+                     src={Edit_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[15px] left-9 cursor-pointer hover:text-black">
+                     Edit
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[26px] "
+                     src={leaderboard_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[26px] left-[36px]  cursor-pointer hover:text-black">
+                     Leaderboard 
+                   </span>
+                   <img
+                     className="absolute h-[10px] w-[10px]  left-[14px] -ml-2 top-[37px] "
+                     src={Share_button}
+                     alt="Play icon"
+                   />
+                   <span className="text-[5px] -ml-[18px] absolute top-[37px] left-[36px] cursor-pointer hover:text-black">
+                     Share
+                   </span>
+                 </div>
                   )}
                 </div>
+              </div>
+              <div className={styles.category}>
+                <span className={styles.category1}>
+                  {popularquizzes[5]?.category}
+                </span>
+                <p className=" px-[2px] font-normal">|</p>
+                <span className={styles.category1}>
+                  {popularquizzes[5]?.sub_category}
+                </span>
+              </div>
+
+              <div className={styles.description}>
+                <span>
+                  {popularquizzes[5]?.quiz_description}
+                </span>
               </div>
 
               <div
@@ -2257,8 +2569,8 @@ const Dashboard = () => {
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
-                <div className="">
-                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[11px] -top-[90px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <div className="z-0">
+                  <div className="flex gap-[5px] h-[18px] w-[105px] pt-[4px] rounded text-[#002366]  relative -left-[10px] -top-[90px] hover:text-black ">
                     <img
                       className="h-[15px] w-[13px] pl-[3px] pb-1"
                       src={Attempt1}
@@ -2267,10 +2579,11 @@ const Dashboard = () => {
                       height={10}
                     />
                     <p>{popularquizzes[5]?.quiz_attempts}</p>
+                    <span className="text-[6px] ml-1">attempts</span>
                   </div>
                 </div>
 
-                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[1.5px] -mt-[89.5px] gap-[3px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[12px] hover:text-black">
                   <img
                     className="pb-[1px] pt-[2px] -mt-1  relative bottom-[2px]"
                     src={NoOfQuestion}
@@ -2279,8 +2592,9 @@ const Dashboard = () => {
                     height={10}
                   />{" "}
                   {popularquizzes[5]?.number_of_questions}
+                  <span className="text-[6px] ml-[1px]">questions</span>
                 </span>
-                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex pl-[2px] pt-[2px] pb-[2px] -mt-[0.5px] gap-[5px] text-[#002366] h-[18px] w-[106px] rounded  relative -left-[14px] hover:text-black ">
                   <img
                     className="pb-[1px] mr-[1px] relative left-[3px] "
                     src={Clock}
@@ -2289,8 +2603,9 @@ const Dashboard = () => {
                     height={14}
                   />{" "}
                   {popularquizzes[5]?.quiz_duration}
+                  <span className="text-[6px] -ml-[0.5px]">minutes</span>
                 </span>
-                <span className="flex pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black hover:underline underline-offset-2 cursor-pointer">
+                <span className="flex text-[6px] pt-1 -mt-[4px] gap-[3px] h-[18px] text-[#002366] w-[106px] rounded  relative -left-[10px] hover:text-black">
                   <img
                     className="ml-[1px] pl-[2px] pt-[1px] pb-[2px] pr-[2px]"
                     src={Easy}

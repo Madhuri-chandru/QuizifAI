@@ -101,17 +101,17 @@ border: none;
   font-size: 10px;
   color: #002366;
   padding: 5px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   cursor: pointer;
   font-weight: 600; 
-  margin-top: 40px;
+  /* margin-top: 40px; */
   margin-left: 10px;
- padding-left: -10px;
+ padding-left: -3px;
  text-decoration: underline;
  text-underline-offset: 2.5px;
- /* margin-top: 50px !important; */
+ text-wrap: nowrap;
  padding-right: 60px;
-  /* padding-top: 10px;  */
+
 }
 .title:hover{
   color:black;
@@ -119,6 +119,18 @@ border: none;
   text-underline-offset: 3px;
  text-decoration-line: 2.5px;
 
+}
+.category{
+  display: flex;
+  margin-top: 4px;
+  padding-left: 15px;
+  font-size: 9px;
+  /* text-wrap: nowrap; */
+}
+
+.category1{
+  cursor: pointer;
+  font-weight: normal;
 }
 
 .moreButton{
@@ -235,7 +247,7 @@ margin-left: 20px;
 
 .card {
   width: 240px;
-  height: 120px;
+  height: 130px;
   background-color: #F5F5F5;
   font-weight: 600 ;
   margin: 5px;
@@ -331,25 +343,26 @@ letter-spacing: 0em;
 text-align: left;
 
 }
+.start{
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+.start:hover{
+  background-color: #cccecf;
 
-.infoBox {
+}
+
+
+.description {
   width: 146px; 
   height: 3cqmin; 
-  font-size: 8px;
+  font-size: 7.5px;
   padding-left: 10px;
-  font-weight: 400px;
   margin-left: 5px;
-  margin-top: 10px; 
+  margin-top: 5px; 
+  font-weight: normal;
 }
-.infoBox1{
-  width: 146px; 
-  height: 3cqmin; 
-  font-size: 8px;
-  padding-left: 10px;
-  font-weight: 100px;
-  margin-left: 5px;
-  margin-top: 5px;
-}
+
 
 .titlename{
 padding-left: 15px;
@@ -378,7 +391,7 @@ padding-top: 10px;
   display: flex;
   flex-direction: column; 
   position: relative;
-  top: 16px;
+  top: 15px;
   /* margin-top: -80px; */
   margin-left: 175px;
   font-family: Poppins;
