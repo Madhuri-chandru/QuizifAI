@@ -315,6 +315,10 @@ text-align: left;
 }
 .titlename{
   padding-left: 15px;
+padding-left: 15px;
+padding-top: 10px;
+text-wrap: nowrap;
+
 }
 
 .description {

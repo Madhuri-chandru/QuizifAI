@@ -267,7 +267,8 @@ const Dashboard = () => {
                     {/* <Progress percent={latestResults[1]?.attained_percentage} /> */}
                   </span>
                   <span
-                    className={`text-[10px] relative top-1 right-[20px]`} style={{ color: textColorClass1 }}
+                    className={`text-[10px] relative top-1 right-[20px]`}
+                    style={{ color: textColorClass1 }}
                   >
                     {latestResult[1]?.quiz_percentage}%
                   </span>
@@ -304,8 +305,9 @@ const Dashboard = () => {
 
                     {/* <Progress percent={latestResults[2]?.attained_percentage} /> */}
                   </span>
-                  <span 
-                    className={`text-[10px] relative top-1 right-[20px]`} style={{ color: textColorClass2 }}
+                  <span
+                    className={`text-[10px] relative top-1 right-[20px]`}
+                    style={{ color: textColorClass2 }}
                   >
                     {latestResult[2]?.quiz_percentage}%
                   </span>
@@ -342,7 +344,8 @@ const Dashboard = () => {
                     {/* <Progress percent={latestResults[2]?.attained_percentage} /> */}
                   </span>
                   <span
-                    className={`text-[10px] relative top-1 right-[20px]`} style={{ color: textColorClass3 }}
+                    className={`text-[10px] relative top-1 right-[20px]`}
+                    style={{ color: textColorClass3 }}
                   >
                     {latestResult[3]?.quiz_percentage}%
                   </span>
@@ -399,9 +402,13 @@ const Dashboard = () => {
                   {latestquizzes[0]?.quiz_description}
                 </span>
 
-                <div className="pl-[20px] pr-[10px] w-[121.5px] mt-[30px] relative -top-[14px] -left-[11px] border border-current py-[4.5px]">{latestquizzes[0]?.category}</div>
+                <div className="pl-[20px] pr-[10px] w-[121.5px] mt-[30px] relative -top-[14px] -left-[11px] border border-current py-[4.5px]">
+                  {latestquizzes[0]?.category}
+                </div>
                 {/* <p className="relative left-[98px] -top-[20px] ">|</p> */}
-                <span className="px-[53.5px] w-[90px] mt-[-23px] text-nowrap relative -top-[30.5px] border border-current py-[4.8px] left-[110px]">{latestquizzes[0]?.sub_category}</span>
+                <span className="px-[53.5px] w-[90px] mt-[-23px] text-nowrap relative -top-[30.5px] border border-current py-[4.8px] left-[110px]">
+                  {latestquizzes[0]?.sub_category}
+                </span>
 
                 <div className="pl-[20px] pr-[10px] w-[121.5px] mt-[30px] relative -top-[15px] -left-[11px] border border-current py-[5px]">
                   {latestquizzes[0]?.category}
@@ -410,7 +417,6 @@ const Dashboard = () => {
                 <span className="px-[52.9px] w-[90px] mt-[-23px] text-nowrap relative -top-[32px] border border-current py-[5px] left-[110px]">
                   {latestquizzes[0]?.sub_category}
                 </span>
-
 
                 <div className={styles.additionalInfo}>
                   <div
@@ -441,7 +447,6 @@ const Dashboard = () => {
                       <p>{latestquizzes[0]?.quiz_attempts}</p>
                     </div>
                   </div>
-
 
                   <span className="flex pl-[5px] pt-[4px]  -mt-[93.5px] gap-[5px] h-[20px] w-[105px] border border-current relative -left-[6px] -top-[0.5px]">
                     {/* <img className="pl-[2px] pt-[2px] pb-[1px] mr-[3px]"
@@ -501,45 +506,48 @@ const Dashboard = () => {
                     /> */}
 
                     <div className="border border-current pt-[4px] mb-[2px] px-[19.3px] relative -left-[6px] -top-[7px] py-[5px]">
-                    <span className="pl-[13px] font-semibold">Play</span>
-                    <span className="pl-[20px] font-semibold">Edit</span>
-
-                    <div className="border border-current pt-[4px] mb-[2px] px-[20px] relative -left-[7.5px] -top-[4.5px] py-[4px]">
                       <span className="pl-[13px] font-semibold">Play</span>
                       <span className="pl-[20px] font-semibold">Edit</span>
 
+                      <div className="border border-current pt-[4px] mb-[2px] px-[20px] relative -left-[7.5px] -top-[4.5px] py-[4px]">
+                        <span className="pl-[13px] font-semibold">Play</span>
+                        <span className="pl-[20px] font-semibold">Edit</span>
+                      </div>
+                      {/* <img src={img4Icon} alt="Icon 4" width={11} height={7} /> */}
+                      {/* <img src={img5Icon} alt="Icon 5" width={7} height={8} /> */}
                     </div>
-                    {/* <img src={img4Icon} alt="Icon 4" width={11} height={7} /> */}
-                    {/* <img src={img5Icon} alt="Icon 5" width={7} height={8} /> */}
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {latestquizzes[1]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {latestquizzes[1]?.quiz_description}
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {latestquizzes[1]?.quiz_name}
                 </span>
-                <div className="pl-[20px] pr-[10px] w-[121.5px] mt-[30px] relative -top-[14px] -left-[11px] border border-current py-[4.5px]">{latestquizzes[0]?.category}</div>
-                {/* <p className="relative left-[98px] -top-[20px] ">|</p> */}
-                <span className="px-[53.5px] w-[90px] mt-[-23px] text-nowrap relative -top-[30.5px] border border-current py-[4.8px] left-[110px]">{latestquizzes[0]?.sub_category}</span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "20px" }}
-                  >
-                    {/* <img
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {latestquizzes[1]?.quiz_description}
+                  </span>
+                  <div className="pl-[20px] pr-[10px] w-[121.5px] mt-[30px] relative -top-[14px] -left-[11px] border border-current py-[4.5px]">
+                    {latestquizzes[0]?.category}
+                  </div>
+                  {/* <p className="relative left-[98px] -top-[20px] ">|</p> */}
+                  <span className="px-[53.5px] w-[90px] mt-[-23px] text-nowrap relative -top-[30.5px] border border-current py-[4.8px] left-[110px]">
+                    {latestquizzes[0]?.sub_category}
+                  </span>
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "20px" }}
+                    >
+                      {/* <img
                       src={infoIcon}
                       alt="Separate Icon"
                       width={10}
                       height={10}
                       style={{ marginLeft: "40px" }}
                     /> */}
-                  </div>
-                  <div className="flex pl-[5px] pt-[5px] gap-[5px] h-[20px] w-[105px] border border-current relative -left-[6px] -top-[93px]">
+                    </div>
+                    <div className="flex pl-[5px] pt-[5px] gap-[5px] h-[20px] w-[105px] border border-current relative -left-[6px] -top-[93px]">
                       {/* <img
                         className="h-[15px] w-[13px] pl-[2px] pt-[1px] mr-[3px]"
                         src={attempts}
@@ -549,705 +557,705 @@ const Dashboard = () => {
                       /> */}
                       <p>{latestquizzes[1]?.quiz_attempts}</p>
                     </div>
-                  <span className="flex pl-[5px] pt-[4px]  -mt-[93.5px] gap-[5px] h-[20px] w-[105px] border border-current relative -left-[6px] -top-[0.5px]">
-                    {/* <img
+                    <span className="flex pl-[5px] pt-[4px]  -mt-[93.5px] gap-[5px] h-[20px] w-[105px] border border-current relative -left-[6px] -top-[0.5px]">
+                      {/* <img
                       src={topicIcon}
                       alt="Topic Icon"
                       width={10}
                       height={10}
                     />{" "} */}
-                    {latestquizzes[1]?.category}
-                  </span>
-                  <span className="flex pl-[5px] pt-[4px]  gap-[5px] h-[20px] w-[105px] border border-current relative -top-[1px] -left-[6px]">
-                    {/* <img
+                      {latestquizzes[1]?.category}
+                    </span>
+                    <span className="flex pl-[5px] pt-[4px]  gap-[5px] h-[20px] w-[105px] border border-current relative -top-[1px] -left-[6px]">
+                      {/* <img
                       src={timerIcon}
                       alt="Time Icon"
                       width={10}
                       height={10}
                     />{" "} */}
-                    {latestquizzes[1]?.quiz_duration}
-                  </span>
-                  <span className="flex pl-[5px] pt-[3px] gap-[5px] h-[20px] w-[105px] border border-current relative -left-[6px] -top-[1.5px]">
-                    {/* <img
+                      {latestquizzes[1]?.quiz_duration}
+                    </span>
+                    <span className="flex pl-[5px] pt-[3px] gap-[5px] h-[20px] w-[105px] border border-current relative -left-[6px] -top-[1.5px]">
+                      {/* <img
                       src={difficultyIcon}
                       alt="Easy Icon"
                       width={10}
                       height={10}
                     />{" "} */}
-                    {latestquizzes[1]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    {/* <img src={img1Icon} alt="Icon 1" width={8} height={8} /> */}
-                    {/* <img
+                      {latestquizzes[1]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      {/* <img src={img1Icon} alt="Icon 1" width={8} height={8} /> */}
+                      {/* <img
                       src={img2Icon}
                       alt="Icon 2"
                       width={6}
                       height={6}
                       style={{ marginTop: "1px" }}
                     /> */}
-                     <div className="border border-current pt-[4px] mb-[2px] px-[19.3px] relative -left-[6px] -top-[7px] py-[5px]">
-                    <span className="pl-[13px] font-semibold">Play</span>
-                    <span className="pl-[20px] font-semibold">Edit</span>
+                      <div className="border border-current pt-[4px] mb-[2px] px-[19.3px] relative -left-[6px] -top-[7px] py-[5px]">
+                        <span className="pl-[13px] font-semibold">Play</span>
+                        <span className="pl-[20px] font-semibold">Edit</span>
+                      </div>
+                      {/* <img src={img3Icon} alt="Icon 3" width={8} height={8} /> */}
+                      {/* <img src={img4Icon} alt="Icon 4" width={11} height={7} /> */}
+                      {/* <img src={img5Icon} alt="Icon 5" width={7} height={8} /> */}
                     </div>
-                    {/* <img src={img3Icon} alt="Icon 3" width={8} height={8} /> */}
-                    {/* <img src={img4Icon} alt="Icon 4" width={11} height={7} /> */}
-                    {/* <img src={img5Icon} alt="Icon 5" width={7} height={8} /> */}
+                  </div>
+                </div>
+              </div>
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {latestquizzes[2]?.quiz_name}
+                </span>
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {latestquizzes[2]?.quiz_description}
+                  </span>
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "20px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[2]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[2]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[2]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {latestquizzes[3]?.quiz_name}
+                </span>
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {latestquizzes[3]?.quiz_description}
+                  </span>
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[3]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[3]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[3]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {latestquizzes[4]?.quiz_name}
+                </span>
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {latestquizzes[4]?.quiz_description}
+                  </span>
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[4]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[4]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[4]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {latestquizzes[5]?.quiz_name}
+                </span>
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {latestquizzes[5]?.quiz_description}
+                  </span>
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[5]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[5]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {latestquizzes[5]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {latestquizzes[2]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {latestquizzes[2]?.quiz_description}
+            <div className={styles.topScoredHeader}>
+              <p>Most Popular</p>
+            </div>
+            <div className={styles.infoCards}>
+              {/* Info cards content */}
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {popularquizzes[0]?.quiz_name}
                 </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[2]?.category}
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {popularquizzes[0]?.quiz_description}
                   </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[2]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[2]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[0]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[0]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[0]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {latestquizzes[3]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {latestquizzes[3]?.quiz_description}
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {popularquizzes[1]?.quiz_name}
                 </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[3]?.category}
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {popularquizzes[1]?.quiz_description}
                   </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[3]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[3]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[1]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[1]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[1]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {latestquizzes[4]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {latestquizzes[4]?.quiz_description}
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {popularquizzes[2]?.quiz_name}
                 </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[4]?.category}
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {popularquizzes[2]?.quiz_description}
                   </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[4]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[4]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[2]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[2]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[2]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {latestquizzes[5]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {latestquizzes[5]?.quiz_description}
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {popularquizzes[3]?.quiz_name}
                 </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[5]?.category}
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {popularquizzes[3]?.quiz_description}
                   </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[5]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {latestquizzes[5]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[3]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[3]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[3]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className={styles.topScoredHeader}>
-            <p>Most Popular</p>
-          </div>
-          <div className={styles.infoCards}>
-            {/* Info cards content */}
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {popularquizzes[0]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {popularquizzes[0]?.quiz_description}
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {popularquizzes[4]?.quiz_name}
                 </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[0]?.category}
+                <div className={styles.infoBox}>
+                  <span className={styles.description}>
+                    {popularquizzes[4]?.quiz_description}
                   </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[0]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[0]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[4]?.complexity}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[4]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[4]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {popularquizzes[1]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {popularquizzes[1]?.quiz_description}
+              <div className={styles.card}>
+                <span className={styles.title}>
+                  {popularquizzes[5]?.quiz_name}
                 </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[1]?.category}
+                <div className={styles.infoBox}>
+                  <span className={styles.quiz_description}>
+                    {popularquizzes[5]?.description}
                   </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[1]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[1]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {popularquizzes[2]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {popularquizzes[2]?.quiz_description}
-                </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[2]?.category}
-                  </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[2]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[2]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {popularquizzes[3]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {popularquizzes[3]?.quiz_description}
-                </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[3]?.category}
-                  </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[3]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[3]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {popularquizzes[4]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.description}>
-                  {popularquizzes[4]?.quiz_description}
-                </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[4]?.complexity}
-                  </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[4]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[4]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.card}>
-              <span className={styles.title}>
-                {popularquizzes[5]?.quiz_name}
-              </span>
-              <div className={styles.infoBox}>
-                <span className={styles.quiz_description}>
-                  {popularquizzes[5]?.description}
-                </span>
-                <div className={styles.additionalInfo}>
-                  <div
-                    className={styles.infoIcon}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <img
-                      src={infoIcon}
-                      alt="Separate Icon"
-                      width={10}
-                      height={10}
-                      style={{ marginLeft: "40px" }}
-                    />
-                  </div>
-                  <span className={styles.infoItem}>
-                    <img
-                      src={topicIcon}
-                      alt="Topic Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[5]?.category}
-                  </span>
-                  <span className={styles.infoItem1}>
-                    <img
-                      src={timerIcon}
-                      alt="Time Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[5]?.quiz_duration}
-                  </span>
-                  <span className={styles.infoItem2}>
-                    <img
-                      src={difficultyIcon}
-                      alt="Easy Icon"
-                      width={10}
-                      height={10}
-                    />{" "}
-                    {popularquizzes[5]?.complexity}
-                  </span>
-                  <div className={styles.iconContainer}>
-                    <img src={img1Icon} alt="Icon 1" width={8} height={8} />
-                    <img
-                      src={img2Icon}
-                      alt="Icon 2"
-                      width={6}
-                      height={6}
-                      style={{ marginTop: "1px" }}
-                    />
-                    <img src={img3Icon} alt="Icon 3" width={8} height={8} />
-                    <img src={img4Icon} alt="Icon 4" width={11} height={7} />
-                    <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                  <div className={styles.additionalInfo}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{ marginTop: "10px" }}
+                    >
+                      <img
+                        src={infoIcon}
+                        alt="Separate Icon"
+                        width={10}
+                        height={10}
+                        style={{ marginLeft: "40px" }}
+                      />
+                    </div>
+                    <span className={styles.infoItem}>
+                      <img
+                        src={topicIcon}
+                        alt="Topic Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[5]?.category}
+                    </span>
+                    <span className={styles.infoItem1}>
+                      <img
+                        src={timerIcon}
+                        alt="Time Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[5]?.quiz_duration}
+                    </span>
+                    <span className={styles.infoItem2}>
+                      <img
+                        src={difficultyIcon}
+                        alt="Easy Icon"
+                        width={10}
+                        height={10}
+                      />{" "}
+                      {popularquizzes[5]?.complexity}
+                    </span>
+                    <div className={styles.iconContainer}>
+                      <img src={img1Icon} alt="Icon 1" width={8} height={8} />
+                      <img
+                        src={img2Icon}
+                        alt="Icon 2"
+                        width={6}
+                        height={6}
+                        style={{ marginTop: "1px" }}
+                      />
+                      <img src={img3Icon} alt="Icon 3" width={8} height={8} />
+                      <img src={img4Icon} alt="Icon 4" width={11} height={7} />
+                      <img src={img5Icon} alt="Icon 5" width={7} height={8} />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <LogoutBar />
       </div>
-      <LogoutBar />
     </div>
-  </div>
   );
 };
 
