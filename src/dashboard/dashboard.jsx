@@ -17,6 +17,7 @@ import Edit_button from "../../public/images/dashboard/Edit-button.png";
 import Attempt1 from "../../public/images/dashboard/Attempt1.png";
 import NoOfQuestion from "../../public/images/dashboard/NoOfQuestion.png";
 import Easy from "../../public/images/dashboard/Easy.png";
+
 import Clock from "../../public/images/dashboard/Clock.png";
 
 // import Clock from "../../public/images/dashboard/Clock.png";
@@ -865,6 +866,7 @@ const toggleNavbar16= () => {
                 style={{ marginTop: "23px" }}
               >
                 <div
+
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
@@ -879,6 +881,8 @@ const toggleNavbar16= () => {
                     />
                     <p>{latestquizzes[2]?.quiz_attempts}</p>
                     <span className="text-[6px] ml-1">attempts</span>
+
+
                   </div>
                 </div>
 
@@ -998,6 +1002,7 @@ const toggleNavbar16= () => {
                 style={{ marginTop: "23px" }}
               >
                 <div
+
                   className={styles.infoIcon}
                   style={{ marginTop: "20px" }}
                 ></div>
@@ -1012,6 +1017,7 @@ const toggleNavbar16= () => {
                     />
                     <p>{latestquizzes[3]?.quiz_attempts}</p>
                     <span className="text-[6px] ml-1">attempts</span>
+
                   </div>
                 </div>
 

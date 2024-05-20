@@ -19,6 +19,7 @@
     align-items: center;
     border-radius: 10px;
     flex-direction: row;
+    gap:80px;
   }
   
   .toggleButton {
@@ -31,7 +32,8 @@
     font-weight: 600;
     cursor: pointer;
     display: flex;
-    align-items: center; 
+    align-items: center;
+    margin-bottom: 5px; 
   }
   
   /* .toggleButton:hover {
@@ -42,6 +44,7 @@
     border: 1px solid #D9D9D9; 
     background-color:  #E0FFE8;
    border-radius: 10px;
+   margin-bottom: 5px;
   }
   
   .icon1{
@@ -258,7 +261,7 @@ font-weight: 500;
 line-height: 30px;
 letter-spacing: 0em;
 text-align: left;
-margin-left: 40px;
+margin-left: 63px;
 margin-top: 30px;
   }
   
@@ -594,7 +597,7 @@ line-height: 23px;
 letter-spacing: 0em;
 text-align: left;
 color: #214082;
-
+text-decoration: underline;
 
   }
 
@@ -606,7 +609,7 @@ line-height: 23px;
 letter-spacing: 0em;
 text-align: left;
 
-color: gray;
+color: black;
 
   }
 
@@ -620,10 +623,12 @@ left: 668px;
   .contentContainer {
     display: flex;
     align-items: center; 
+    gap: 135px;
   }
   .contentContainer1 {
     display: flex;
     align-items: center; 
+    gap: 15px;
   }
   
   
@@ -691,11 +696,11 @@ color: #214082;
   }
   .inputContainer {
     display: flex;
-    margin-left: 80px;
+    margin-left: 231px;
     flex-direction: column;
     align-items: flex-start;
     margin-right: 30px;
-    gap: 20px;
+    gap: 16px;
   }
   
   .inputRow {
@@ -760,7 +765,8 @@ text-align: left;
     width: 150px;
     height: 33px;
     padding: 8px;
-font-size:12px;
+    color: #214082;
+    font-size:12px;
     border-radius: 10px;
     border: 1px solid #DFEAF2
   }
@@ -776,9 +782,9 @@ font-size:12px;
   }
   .customButton {
     width: 130px;
-    height: 40px;
+    height: 33px;
     border-radius: 9px;
-    background-color: #1814F3;
+    background-color: #3B61C8;
     font-family: "poppins";
     border: none;
     font-size: 15px;
@@ -787,7 +793,7 @@ font-size:12px;
   }
   .customButton:first-child {
     margin-right: 8px;
-    margin-left: -30px; 
+    margin-left: -84px; 
   }
   
   .buttonContainer {
@@ -795,7 +801,7 @@ font-size:12px;
     position: relative;
    
     margin-left: 280px; 
-    margin-top: -40px;
+    margin-top: -33px;
     
     
   }
