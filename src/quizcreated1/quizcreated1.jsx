@@ -35,7 +35,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function quizcreated() {
+function quizcreated1() {
   const [quizData, setQuizData] = useState(null);
   // Use useLocation hook to access the location object
   const location = useLocation();
@@ -45,7 +45,7 @@ function quizcreated() {
     if (location.state && location.state.quizData) {
       // Access the quizData from the location state
       const quizData = location.state.quizData;
-      setQuizData(quizData.data)
+      setQuizData(quizData)
 
       // Show quizData in the console
       console.log(quizData);
@@ -53,7 +53,7 @@ function quizcreated() {
   }, [location.state]);
   const navigate = useNavigate();
 const Preview = () => {
-  navigate("/quizview", { state: { quizData: quizData } });
+  navigate("/quizview1", { state: { quizData: quizData } });
 };
   return (
     <>
@@ -151,7 +151,7 @@ const Preview = () => {
                     src={QuizTitle}
                   />
                   <h1 className="font-Poppins text-[18px] font-bold leading-[40px] absolute top-[175px] left-[355px] text-[#555555] text-nowrap">
-                    {quizData[0].quiz_title}
+                    {quizData.quiz_title}
                   </h1>
                   <img
                     className="w-[30px] h-[30px] absolute top-[177px] left-[737px]"
@@ -168,7 +168,7 @@ const Preview = () => {
                     src={QuizDiscription}
                   />
                   <h1 className="w-[760px] h-[49px] absolute top-[252px] left-[355px]">
-                    {quizData[0].quiz_description}
+                    {quizData.quiz_description}
                   </h1>
                   <img
                     className="w-[885px] absolute top-[325px] left-[277px]"
@@ -183,7 +183,7 @@ const Preview = () => {
                   />
                   <div className="w-[185px] h-[23px] absolute top-[356px] left-[356px]">
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[22.5px] text-[#555555]">
-                      {quizData[0].pass_percentage}% is the pass score
+                      {quizData.pass_percentage}% is the pass score
                     </h1>
                   </div>
                   <img
@@ -193,7 +193,7 @@ const Preview = () => {
 
                   <div className="w-[344px] h-[23px] absolute top-[356px] left-[604px]">
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[22.5px] text-[#555555]">
-                      Complexity:{quizData[0].quiz_complexity_name}
+                      Complexity:{quizData.quiz_complexity_name}
                     </h1>
                   </div>
                   {/* <img className="w-[31px] h-[16.41px] absolute top-[336px] left-[784px]" src={Medium}/>
@@ -205,7 +205,7 @@ const Preview = () => {
                   />
                   <div className="w-[113px] h-[22px] absolute top-[356px] left-[978px]">
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[22.5px] text-[#555555]">
-                      {quizData[0].num_questions} questions
+                      {quizData.num_questions} questions
                     </h1>
                   </div>
 
@@ -224,7 +224,7 @@ const Preview = () => {
                   <div className="w-[164px] h-[32px] absolute top-[432px] left-[349px]">
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[40px] text-[#555555]">
                       {" "}
-                      Retake this paper:{quizData[0].retake_flag}
+                      Retake this paper:{quizData.retake_flag}
                     </h1>
                   </div>
                   <img
@@ -235,7 +235,7 @@ const Preview = () => {
                   <div className="w-[223px] h-[32px] absolute top-[432px] left-[594px]">
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[40px] text-[#555555]">
                       Multiple Answers:{" "}
-                      {quizData[0].multi_answer ? "Yes" : "No"}
+                      {quizData.multi_answer ? "Yes" : "No"}
                     </h1>
                   </div>
                   <img
@@ -251,7 +251,7 @@ const Preview = () => {
                   />
                   <div className="w-[264px] h-[27px] absolute top-[514px] left-[355px]">
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[22.5px] text-[#555555]">
-                    {quizData[0].quiz_sub_category_name} from  {" "}{quizData[0].quiz_category_name}
+                    {quizData.quiz_sub_category_name} from  {" "}{quizData.quiz_category_name}
                      {" "}
                     </h1>
                   </div>
@@ -263,8 +263,8 @@ const Preview = () => {
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[22.5px] text-[#555555]">
                  
               {/* <p>Total Questions: {quiz.num_questions}</p> */}
-              <span>Total {quizData[0].quiz_duration} minutes</span> {" "}
-              <span>{quizData[0].quiz_duration * 60 / quizData[0].num_questions} seconds  for each questions</span>
+              <span>Total {quizData.quiz_duration} minutes</span> {" "}
+              <span>{quizData.quiz_duration * 60 / quizData.num_questions} seconds  for each questions</span>
                      {" "}
                     </h1>
                   </div>
@@ -281,8 +281,8 @@ const Preview = () => {
                   />
                   <div className="w-[391px] h-[27px] absolute top-[599px] left-[355px]">
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[40px] text-[#555555]">
-                      Quiz will be live from: {quizData[0].available_from} to{" "}
-                      {quizData[0].disabled_on}
+                      Quiz will be live from: {quizData.available_from} to{" "}
+                      {quizData.disabled_on}
                     </h1>
                   </div>
                   <img
@@ -301,7 +301,7 @@ const Preview = () => {
                   <div className="w-[182px] h-[27px] absolute top-[599px] left-[1035px]">
                     <h1 className="font-Poppins font-semibold text-[15px] leading-[40px] text-[#555555]">
                       Public access:{" "}
-                      {quizData[0].quiz_public_access ? "Yes" : "No"}
+                      {quizData.quiz_public_access ? "Yes" : "No"}
                     </h1>
                   </div>
                 </div>
@@ -341,4 +341,4 @@ const Preview = () => {
   );
 }
 
-export default quizcreated;
+export default quizcreated1;

@@ -25,11 +25,12 @@ import img5Icon from "../assets/Images/images/dashboard/img5New.png";
 import todayTopicIcon from "../assets/Images/images/dashboard/todayTopic.png";
 import subTopicIcon from "../assets/Images/images/dashboard/subTopic.png";
 import infoph from "../assets/Images/images/profile/infoPh.png";
-import EmailIcon from "../assets/Images/images/profile/iconemail.png";
+import EmailIcon from "../assets/Images/images/email/mail.png";
 import GmailIcon from "../assets/Images/images/profile/icongmail.png";
-import MobileIcon from "../assets/Images/images/profile/iconmobile.png";
+import MobileIcon from "../assets/Images/images/mobile/mob.png";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Progress } from "react-sweet-progress";
+import TextField from "@mui/material/TextField";
 import "react-sweet-progress/lib/style.css";
 
 const FreeProfile = () => {
@@ -49,9 +50,9 @@ const FreeProfile = () => {
   const currentValue2 = 30;
   const maxValue2 = 80;
 
-  const [selectedButton, setSelectedButton] = useState("Email");
+  const [selectedButton, setSelectedButton] = useState("email");
   const [inputValue, setInputValue] = useState("");
-  const [preferredLoginMethod, setPreferredLoginMethod] = useState("Email");
+  const [preferredLoginMethod, setPreferredLoginMethod] = useState("email");
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -74,10 +75,14 @@ const FreeProfile = () => {
   const [notAttemptedQuizzes, setNotAttemptedQuizzes] = useState([]);
   const [attemptedQuizzes, setAttemptedQuizzes] = useState([]);
   const [topScoredQuizzes, setTopScoredQuizzes] = useState([]);
-  const [userId, setUserId] = useState(localStorage.getItem('user_id'));
+  const [userId, setUserId] = useState(localStorage.getItem("user_id"));
   const [profileData, setProfileData] = useState(null);
-  const [profession, setProfession] = useState('');
-
+  const [profession, setProfession] = useState("");
+  const [Otp, setOtp] = useState(null);
+  const [userrole, setuserrole] = useState("quiz user");
+  const [usertype, setusertype] = useState("public");
+  const [displayname, setdisplayname] = useState(null);
+  const [professions, setProfessions] = useState("student");
 
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
@@ -94,7 +99,6 @@ const FreeProfile = () => {
     </progress>
   );
 
-
   const handleSubmit = async () => {
     const payload = {
       user_id: userId,
@@ -102,37 +106,34 @@ const FreeProfile = () => {
       middle_name: middleName,
       last_name: lastName,
       user_email: email,
-      
+
       user_phone_number: parseInt(mobileNumber === "" ? "0" : mobileNumber),
       gender: gender,
       date_of_birth: dob,
       user_address_line_1: address1,
       user_address_line_2: address2,
-      occupation: profession,
+      occupation: professions,
       preferred_login_method: preferredLoginMethod,
-      access_key:accesskey,
-      user_role: 'quiz user',
-      user_type: 'public',
+      access_key: accesskey,
+      user_role: userrole,
+      user_type: usertype,
       user_org_id: 0,
       active_flag: true,
       user_address_id: 0,
       user_location_id: 0,
       access_key: null,
-      otp: Otp ,
-      display_name:profession,
-   };
+      otp: Otp,
+      display_name: displayname,
+    };
 
     try {
-      const response = await fetch(
-        "https://quizifai.com:8010/edt_prfl_dtls",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const response = await fetch("https://quizifai.com:8010/edt_prfl_dtls", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to submit data");
@@ -148,73 +149,72 @@ const FreeProfile = () => {
 
   useEffect(() => {
     // Fetch user_id from local storage
-    const userId = localStorage.getItem('user_id');
+    const userId = localStorage.getItem("user_id");
 
     // Make a POST request to the API endpoint
-    fetch('https://quizifai.com:8010/get_prfl_dtls', {
-      method: 'POST',
+    fetch("https://quizifai.com:8010/get_prfl_dtls", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'accept': 'application/json'
+        "Content-Type": "application/json",
+        accept: "application/json",
       },
-      body: JSON.stringify({ user_id: userId })
+      body: JSON.stringify({ user_id: userId }),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Handle successful response
-      setProfileData(data);
-      setFirstName(data.data.first_name);
-      setMiddleName(data.data.middle_name);
-      setLastName(data.data.last_name);
-      setGender(data.data.gender);
-      setProfession(data.data.occupation_name);
-      setDob(data.data.date_of_birth);
-
-      setPostalCode(data.data.pin_code);
-      setAddress1(data.data.user_address_line_1);
-      setAddress2(data.data.user_address_line_2);
-      setCity(data.data.location_name);
-      setState(data.data.state_name);
-      setCountry(data.data.country_name);
-      setEmail(data.data.user_email);
-      setMobileNumber(data.data.user_phone_number);
-    })
-    .catch(error => {
-      // Handle errors
-      console.error('Error fetching profile data:', error);
-    });
-  }, []);
-  useEffect(() => {
- 
-    const fetchQuizData = async () => {
-      try {
-        const response = await fetch(
-          `https://quizifai.com:8010/landing_page?user_id=1`
-        );
+      .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch quiz data");
+          throw new Error("Network response was not ok");
         }
-        const data = await response.json();
-        setTimeData(data.time_spent);
-        setLatestResults(data.latest_results);
-        setWeeklyQuizCount(data.weekly_quiz_count);
-        setAverageScorePercentage(data.average_score_percentage);
-        setNotAttemptedQuizzes(data.latest_not_attempted_quizzes);
-        setAttemptedQuizzes(data.latest_attempted_quizzes);
-        setTopScoredQuizzes(data.top_scored_quizzes);
-      } catch (error) {
-        console.error("Error fetching quiz data:", error);
-      }
-    };
+        return response.json();
+      })
+      .then((data) => {
+        // Handle successful response
+        setProfileData(data);
+        setFirstName(data.data.first_name);
+        setMiddleName(data.data.middle_name);
+        setLastName(data.data.last_name);
+        setGender(data.data.gender);
+        setProfession(data.data.occupation_name);
+        setDob(data.data.date_of_birth);
 
- 
-    fetchQuizData();
+        setPostalCode(data.data.pin_code);
+        setAddress1(data.data.user_address_line_1);
+        setAddress2(data.data.user_address_line_2);
+        setCity(data.data.location_name);
+        setState(data.data.state_name);
+        setCountry(data.data.country_name);
+        setEmail(data.data.user_email);
+        setMobileNumber(data.data.user_phone_number);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error fetching profile data:", error);
+      });
   }, []);
+  // useEffect(() => {
+
+  //   const fetchQuizData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://quizifai.com:8010/landing_page?user_id=1`
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch quiz data");
+  //       }
+  //       const data = await response.json();
+  //       setTimeData(data.time_spent);
+  //       setLatestResults(data.latest_results);
+  //       setWeeklyQuizCount(data.weekly_quiz_count);
+  //       setAverageScorePercentage(data.average_score_percentage);
+  //       setNotAttemptedQuizzes(data.latest_not_attempted_quizzes);
+  //       setAttemptedQuizzes(data.latest_attempted_quizzes);
+  //       setTopScoredQuizzes(data.top_scored_quizzes);
+  //     } catch (error) {
+  //       console.error("Error fetching quiz data:", error);
+  //     }
+  //   };
+
+  //   fetchQuizData();
+  // }, []);
 
   const [pincode, setpincode] = useState("");
   const [countryname, setcountryname] = useState("");
@@ -262,11 +262,11 @@ const FreeProfile = () => {
       setErrorMessage("Failed to submit form. Please try again.");
     }
   };
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     // Retrieve user name from local storage
-    const storedUserName = localStorage.getItem('user_name');
+    const storedUserName = localStorage.getItem("user_name");
     setUserName(storedUserName);
   }, []);
   return (
@@ -310,11 +310,11 @@ const FreeProfile = () => {
                 style={{ marginLeft: "150px", marginTop: "-105px" }}
               >
                 <div className={styles.textLine1}>{profession} </div>
-                <div className={styles.textLine2}>
-                  (Plan of the Subscription){" "}
+                <div className={styles.textLine3}>
+                  (<span className={styles.textLine2}>Plan of the Subscription</span>){" "}
                 </div>
                 <div className={styles.textLine3}>
-                  no. days left in Subscription/ free
+                  No. days left in Subscription/ Free
                 </div>
               </div>
             </div>
@@ -373,8 +373,30 @@ const FreeProfile = () => {
                 type="text"
                 id="firstName"
                 placeholder="First Name"
+
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
+                // label="First Name"
+                // style={{ width: "150px", height: "50px" }}
+                // InputLabelProps={{
+                //   style: { fontFamily: "poppins" },
+                // }}
+                // InputProps={{
+                //   style: {
+                //     // backgroundImage: `url('/images/email/mail.png')`,
+                //     // backgroundSize: "19px 16px",
+                //     // backgroundPosition: "295px center",
+                //     // backgroundRepeat: "no-repeat",
+                //     width: "150px",
+                //     height: "50px",
+                //     backgroundColor: "white",
+                //     border: "none",
+                //     fontFamily: "poppins",
+                //     paddingLeft: "0px",
+                //     borderRadius: "10px",
+                //   },
+                //   autoComplete: "off",
+                // }}
               />
             </div>
             <div className={styles.inputGroup}>
@@ -397,7 +419,11 @@ const FreeProfile = () => {
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
-            <div className={styles.inputGroup}>
+         
+          </div>
+
+          <div className={styles.inputRow}>
+          <div className={styles.inputGroup}>
               <label htmlFor="gender">Gender</label>
               <select
                 id="gender"
@@ -409,21 +435,16 @@ const FreeProfile = () => {
                 <option value="female">Female</option>
               </select>
             </div>
-          </div>
-
-       
-
-          <div className={styles.inputRow}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="dob">Date of Birth</label>
-            <input
-              type="date"
-              id="dob"
-              placeholder="Select your date of birth"
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
-            />
-          </div>
+            <div className={styles.inputGroup}>
+              <label htmlFor="dob">Date of Birth</label>
+              <input
+                type="date"
+                id="dob"
+                placeholder="Select your date of birth"
+                value={dob}
+                onChange={(e) => setDob(e.target.value)}
+              />
+            </div>
             <div className={styles.inputGroup}>
               <label htmlFor="postalCode">Postal Code</label>
               <input
@@ -433,7 +454,7 @@ const FreeProfile = () => {
                 value={postalCode}
                 onChange={(e) => setPostalCode(e.target.value)}
               />
-                     {/* <div
+              {/* <div
                     className={styles.searchicon}
                     onClick={handleSubmit1}
                     style={{
@@ -454,7 +475,7 @@ const FreeProfile = () => {
                     }}
                   ></div> */}
             </div>
-            <div className={styles.inputGroup}>
+            {/* <div className={styles.inputGroup}>
               <label htmlFor="address1">Address Line 1</label>
               <input
                 type="text"
@@ -473,7 +494,7 @@ const FreeProfile = () => {
                 value={address2}
                 onChange={(e) => setAddress2(e.target.value)}
               />
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.inputRow}>
@@ -509,7 +530,7 @@ const FreeProfile = () => {
             </div>
           </div>
 
-          <div className={styles.toggleButtonsContainer}>
+          {/* <div className={styles.toggleButtonsContainer}>
             {/* <button
               className={`${styles.toggleButton} ${
                 selectedButton === "Email" && styles.selected
@@ -538,20 +559,24 @@ const FreeProfile = () => {
               />{" "}
               Mobile
             </button> */}
-          </div>
+          {/* </div>  */}
 
           <div className={styles.inputRow}>
             <div className={styles.inputGroup}>
               {/* <label htmlFor="email">Email</label> */}
               <button
-              className={`${styles.toggleButton} ${
-                selectedButton === "Email" && styles.selected
-              }`}
-              onClick={() => handleButtonClick("Email")}
-            >
-              <img src={EmailIcon} alt="Email Icon" className={styles.icon1} />{" "}
-              Email
-            </button>
+                className={`${styles.toggleButton} ${
+                  selectedButton === "Email" && styles.selected
+                }`}
+                onClick={() => handleButtonClick("email")}
+              >
+                <img
+                  src={EmailIcon}
+                  alt="Email Icon"
+                  className={styles.icon1}
+                />{" "}
+                Email
+              </button>
               <input
                 type="email"
                 id="email"
@@ -563,18 +588,18 @@ const FreeProfile = () => {
             <div className={styles.inputGroup}>
               {/* <label htmlFor="mobileNumber">Mobile Number</label> */}
               <button
-              className={`${styles.toggleButton} ${
-                selectedButton === "Mobile" && styles.selected
-              }`}
-              onClick={() => handleButtonClick("Mobile")}
-            >
-              <img
-                src={MobileIcon}
-                alt="Mobile Icon"
-                className={styles.icon3}
-              />{" "}
-              Mobile
-            </button>
+                className={`${styles.toggleButton} ${
+                  selectedButton === "Mobile" && styles.selected
+                }`}
+                onClick={() => handleButtonClick("Mobile")}
+              >
+                <img
+                  src={MobileIcon}
+                  alt="Mobile Icon"
+                  className={styles.icon3}
+                />{" "}
+                Mobile
+              </button> 
               <input
                 type="tel"
                 id="mobileNumber"
@@ -583,14 +608,16 @@ const FreeProfile = () => {
                 onChange={(e) => setMobileNumber(e.target.value)}
               />
               <div className={styles.buttonContainer}>
-                <button className={styles.customButton} >Verify</button>
-                <button className={styles.customButton} onClick={handleSubmit}>Edit</button>
+                <button className={styles.customButton}>Verify</button>
+                <button className={styles.customButton} onClick={handleSubmit}>
+                  Edit
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-          {/* <div className={styles.box}>
+        {/* <div className={styles.box}>
         <div className={styles.horizontalBoxes}>
             <div className={styles.contentWrapper}>
               <div className={styles.resultWrapper}>
@@ -761,7 +788,7 @@ const FreeProfile = () => {
               <div className={styles.rewards}>Rewards</div>
               <div className={styles.sentencesWrapper}>
                 {/* Add five <div> tags for the sentences */}
-                {/* <div className={styles.sentence}>
+        {/* <div className={styles.sentence}>
                   1. Top Ranked in last week
                 </div>
                 <div className={styles.sentence}>2. Won four Vouchers</div>
@@ -780,7 +807,7 @@ const FreeProfile = () => {
           <div className={styles.infoCards}>
             {/* Info cards content */}
 
-            {/* <div className={styles.card}>
+        {/* <div className={styles.card}>
               <span className={styles.title}>
                 {attemptedQuizzes[0]?.quiz_name}
               </span>
@@ -979,7 +1006,7 @@ const FreeProfile = () => {
           <div className={styles.infoCards}>
             {/* Info cards content */}
 
-            {/* <div className={styles.card}>
+        {/* <div className={styles.card}>
               <span className={styles.title}>
                 {topScoredQuizzes[0]?.quiz_name}
               </span>
@@ -1172,7 +1199,7 @@ const FreeProfile = () => {
               </div>
             </div>
           </div>
-        </div>  */} 
+        </div>  */}
       </div>
       <div className={styles.logout}>
         <div

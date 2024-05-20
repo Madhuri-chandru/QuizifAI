@@ -786,13 +786,13 @@ margin-top: -3px;
 .totalBox {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
   border: 1px solid #e0e0e0; /* Add border */
-  padding: 20px; /* Adjust padding as needed */
+  padding: 30px; /* Adjust padding as needed */
   margin-top: 20px; /* Adjust margin as needed */
   justify-content: center;
   display:flex;
   border-radius: 28px;
   margin-right:180px;
-  height: 400px;
+  /* height: 400px; */
   /* position: relative;
   left: 120px; */
   width:450px;

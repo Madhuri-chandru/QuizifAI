@@ -81,7 +81,7 @@ const getQuestionImage = (index) => {
       return ""; // Return default image or handle as per your requirement
   }
 }
-const quizview = () => {
+const quizview1 = () => {
   const [quizData, setQuizData] = useState(null);
 
   const location = useLocation();
@@ -288,7 +288,7 @@ const quizview = () => {
         </div> */}
        
         <div className={styles.boxContainer}>
-        {quizData[0] && quizData[0].questions && quizData[0].questions.map((question, index) => (
+        {quizData && quizData.questions && quizData.questions.map((question, index) => (
   <div key={index} className={styles.questionContainer}>
     <div className={styles.question}>
       <span className={styles.questionText}>{index + 1}. {question.question_text}</span>
@@ -325,4 +325,4 @@ const quizview = () => {
   );
 };
 
-export default quizview;
+export default quizview1;

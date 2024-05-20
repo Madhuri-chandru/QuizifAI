@@ -149,7 +149,7 @@ export default function quiztype() {
   const [retakeOption, setRetakeOption] = useState("");
   const [retake, setRetake] = useState(0);
   const [duration, setDuration] = useState("");
-  const [timings, setTimings] = useState('');
+  const [timings, setTimings] = useState("");
   const [minutes, setMinutes] = useState("");
   const [availablefrom, setavailablefrom] = useState("");
   const [disabledon, setdisabledon] = useState("");
@@ -198,12 +198,10 @@ export default function quiztype() {
 
   const [percentageOptions, setPercentageOptions] = useState([]);
 
-
-
   const [questions, setQuestions] = useState([]);
 
   const [complexityOptions, setComplexityOptions] = useState([]);
-  const [selectedComplexity, setSelectedComplexity] = useState('');
+  const [selectedComplexity, setSelectedComplexity] = useState("");
   // useEffect(() => {
   //   fetchData();
   // }, []);
@@ -399,47 +397,62 @@ export default function quiztype() {
   };
   const handleNext = async () => {
     try {
-      const response = await fetch(`https://quizifai.com:8010/crt_qz_from_exl_csv`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          quiz_title: quizData ? quizData.quiz_title : title,
-          num_questions: quizData ? quizData.num_questions : numQuestions,
-          quiz_description: quizData ? quizData.quiz_description : description,
-          quiz_category_name: quizData ? quizData.quiz_category_name : categoryOptions[0],
-          multi_answer: quizData ? quizData.multi_answer : multiAnswer,
-          quiz_sub_category_name: quizData ? quizData.quiz_sub_category_name: subCategoryOptions[0],
-          class_name: quizData ? quizData.course_name : classes,
-          pass_percentage: percentage,
-          quiz_complexity_name:  quizData ? quizData.quiz_complexity_name : complexityOptions[0],
-          retake_flag: quizData ? quizData.retake_flag : isRetakeOn,
-          quiz_duration: duration,
-          course_name:quizData ? quizData.course_name : coursename,
-          quiz_time_bounded_questions: quizData ? quizData.quiz_time_bounded_questions: selectedTiming[0],
-          quiz_public_access: publicAccess,
-          available_from: quizData ? quizData.available_from : availablefrom,
-          disabled_on: quizData ? quizData.disabled_on : disabledon,
-          quiz_total_marks: quizData ? quizData.quiz_total_marks : description,
-          questions: questions.map((question) => ({
-            question_text: question.question_text,
-            question_weightage: question.question_weightage,
-            multi_answer_flag:  quizData ? quizData.multi_answer : multiAnswer,
-            question_duration: question.question_duration,
-            options: question.options.map((option) => ({
-              answer_option_text: option.answer_option_text,
-              correct_answer_flag: option.correct_answer_flag,
+      const response = await fetch(
+        `https://quizifai.com:8010/crt_qz_from_exl_csv`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            quiz_title: quizData ? quizData.quiz_title : title,
+            num_questions: quizData ? quizData.num_questions : numQuestions,
+            quiz_description: quizData
+              ? quizData.quiz_description
+              : description,
+            quiz_category_name: quizData
+              ? quizData.quiz_category_name
+              : categoryOptions[0],
+            multi_answer: quizData ? quizData.multi_answer : multiAnswer,
+            quiz_sub_category_name: quizData
+              ? quizData.quiz_sub_category_name
+              : subCategoryOptions[0],
+            class_name: quizData ? quizData.course_name : classes,
+            pass_percentage: percentage,
+            quiz_complexity_name: quizData
+              ? quizData.quiz_complexity_name
+              : complexityOptions[0],
+            retake_flag: quizData ? quizData.retake_flag : isRetakeOn,
+            quiz_duration: duration,
+            course_name: quizData ? quizData.course_name : coursename,
+            quiz_time_bounded_questions: quizData
+              ? quizData.quiz_time_bounded_questions
+              : selectedTiming[0],
+            quiz_public_access: publicAccess,
+            available_from: quizData ? quizData.available_from : availablefrom,
+            disabled_on: quizData ? quizData.disabled_on : disabledon,
+            quiz_total_marks: quizData
+              ? quizData.quiz_total_marks
+              : description,
+            questions: questions.map((question) => ({
+              question_text: question.question_text,
+              question_weightage: question.question_weightage,
+              multi_answer_flag: quizData ? quizData.multi_answer : multiAnswer,
+              question_duration: question.question_duration,
+              options: question.options.map((option) => ({
+                answer_option_text: option.answer_option_text,
+                correct_answer_flag: option.correct_answer_flag,
+              })),
             })),
-          })),
-        }),
-      });
+          }),
+        }
+      );
       const responseData = await response.json();
       console.log(responseData, "data");
 
       if (response.ok) {
         // Assuming router and state setter are defined properly
-        navigate("/quizcreated", { state: { quizData: responseData } });
+        navigate("/quizcreated1", { state: { quizData: responseData } });
       } else {
         if (
           responseData.detail &&
@@ -594,7 +607,15 @@ export default function quiztype() {
           setErrorMessage(
             "Please provide the number of questions for the quiz."
           );
-        } else {
+        }else if (
+          responseData.response === "fail" &&
+          responseData.data ===
+            "Total question weightage does not match quiz total marks."
+        ) {
+          setErrorMessage(
+            "Total question weightage does not match quiz total marks."
+          );
+        }  else {
           setErrorMessage(responseData.detail);
         }
       }
@@ -658,6 +679,14 @@ export default function quiztype() {
           // Assuming router and state setter are defined properly
           navigate("/quizcreated", { state: { quizData: responseData } });
         }
+      } else if (
+        responseData.response === "fail" &&
+        responseData.data ===
+          "Total question weightage does not match quiz total marks."
+      ) {
+        setErrorMessage(
+          "Total question weightage does not match quiz total marks."
+        );
       } else {
         if (
           responseData.detail &&
@@ -817,7 +846,7 @@ export default function quiztype() {
                     onChange={(e) => {
                       const value = parseInt(e.target.value);
                       setNumQuestions(value);
-                      
+
                       // Assuming setQuestions is defined somewhere
                       // setQuestions(
                       //   Array.from({ length: value }, () => ({
@@ -830,9 +859,7 @@ export default function quiztype() {
                       //     ],
                       //   }))
                       // );
-                    }
-                  
-                  }
+                    }}
                   />
                 </div>
               </div>
@@ -912,7 +939,10 @@ export default function quiztype() {
                   <select
                     className="w-[260px] border-solid border-[#B8BBC2] px-3 py-3 rounded-md cursor-pointer"
                     onChange={(e) => setSubCategory(e.target.value)}
-                    value={ quizData ? quizData.quiz_sub_category_name: subCategoryOptions[0]
+                    value={
+                      quizData
+                        ? quizData.quiz_sub_category_name
+                        : subCategoryOptions[0]
                     }
                   >
                     {subCategoryOptions.map((subCategory, index) => (
@@ -940,11 +970,11 @@ export default function quiztype() {
                   onChange={(e) => setcoursename(e.target.value)}
                   value={quizData ? quizData.course_name : ""}
                 >
-                    {complexities.map((complexity, index) => (
-          <option key={index} value={complexity}>
-            {complexity}
-          </option>
-        ))}
+                  {complexities.map((complexity, index) => (
+                    <option key={index} value={complexity}>
+                      {complexity}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -996,22 +1026,21 @@ export default function quiztype() {
                 </div>
 
                 <div className=" rounded-lg w-[129px] flex border-solid border-[#B8BBC2] border-[1.8px] absolute top-[376px] left-[1020px]">
-                <select
-        className="w-[264px] px-3 py-3 rounded-md cursor-pointer text-[12px]"
-        onChange={(e) => setSelectedComplexity(e.target.value)}
-    
-        value={
-          quizData
-            ? quizData.quiz_complexity_name
-            : complexityOptions[0]
-        }
-      >
-        {complexityOptions.map((complexity, index) => (
-          <option key={index} value={complexity}>
-            {complexity}
-          </option>
-        ))}
-      </select>
+                  <select
+                    className="w-[264px] px-3 py-3 rounded-md cursor-pointer text-[12px]"
+                    onChange={(e) => setSelectedComplexity(e.target.value)}
+                    value={
+                      quizData
+                        ? quizData.quiz_complexity_name
+                        : complexityOptions[0]
+                    }
+                  >
+                    {complexityOptions.map((complexity, index) => (
+                      <option key={index} value={complexity}>
+                        {complexity}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
 
@@ -1061,7 +1090,7 @@ export default function quiztype() {
 
                 <div className=" rounded-lg w-[166px] flex border-solid border-[#B8BBC2] border-[1.8px] absolute top-[520px] left-[498px]">
                   <select
-                    className="w-[160px] px-3 py-3 rounded-md cursor-pointer text-[12px]"
+                    className="w-[166px] px-3 py-3 rounded-md cursor-pointer text-[12px]"
                     onChange={handleSelect7}
                     value={duration}
                   >
@@ -1117,19 +1146,21 @@ export default function quiztype() {
                 </div>
 
                 <div className=" rounded-lg w-[260px] flex border-solid border-[#B8BBC2] border-[1.8px] absolute top-[520px] left-[1020px]">
-                <select
-        className="w-[260px] px-3 py-3 rounded-md cursor-pointer text-[12px]"
-        
-        onChange={(e) => setTimings(e.target.value)}
-        value={ quizData ? quizData.quiz_time_bounded_questions: selectedTiming[0]
-        }
-      >
-        {selectedTiming.map((timing, index) => (
-          <option key={index} value={timing}>
-            {timing}
-          </option>
-        ))}
-      </select>
+                  <select
+                    className="w-[260px] px-3 py-3 rounded-md cursor-pointer text-[12px]"
+                    onChange={(e) => setTimings(e.target.value)}
+                    value={
+                      quizData
+                        ? quizData.quiz_time_bounded_questions
+                        : selectedTiming[0]
+                    }
+                  >
+                    {selectedTiming.map((timing, index) => (
+                      <option key={index} value={timing}>
+                        {timing}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
 
@@ -1141,6 +1172,7 @@ export default function quiztype() {
 
               <div className="absolute top-[584px] left-[498px]">
                 <input
+                type="date"
                   className="rounded-lg w-[166px] h-[43px] flex border-solid border-[#B8BBC2] border-[1.8px]
               text-[#9696BB] leading-[22.5px] text-[15p] font-medium bg-[#F4F4F4] px-4"
                   placeholder="YYYY-MM-DD"
@@ -1157,8 +1189,9 @@ export default function quiztype() {
 
               <div className=" absolute top-[584px] left-[1020px]">
                 <input
-                  className="rounded-lg w-[156px] h-[43px] flex border-solid border-[#B8BBC2] border-[1.8px]
-              text-[#9696BB] leading-[22.5px] text-[15p] font-medium bg-[#F4F4F4] px-4"
+                 type="date"
+                  className="rounded-lg w-[166px] h-[43px] flex border-solid border-[#B8BBC2] border-[1.8px]
+                  text-[#9696BB] leading-[22.5px] text-[15p] font-medium bg-[#F4F4F4] px-4"
                   placeholder="YYYY-MM-DD"
                   value={quizData ? quizData.disabled_on : disabledon}
                   onChange={(e) => setdisabledon(e.target.value)}
@@ -1189,7 +1222,7 @@ export default function quiztype() {
 
                 <div className="absolute top-[653px] left-[1020px]">
                   <input
-                    className="rounded-lg w-[156px] h-[43px] flex border-solid border-[#B8BBC2] border-[1.8px]
+                    className="rounded-lg w-[166px] h-[43px] flex border-solid border-[#B8BBC2] border-[1.8px]
               text-[#9696BB] text-[15p] font-medium bg-[#ffffff] px-4"
                     placeholder="total marks"
                     value={quizData ? quizData.quiz_total_marks : description}
@@ -1230,7 +1263,7 @@ export default function quiztype() {
               <h1 className="font-Poppins font-normal text-[10px] leading-[15px] text-[#555555] mt-7 ml-5">{`Uploading ${uploadProgress}%`}</h1> */}
 
               {errorMessage && (
-                <div className="error-message w-[300px]">{errorMessage}</div>
+                <div className="error-message w-[500px] relative right-[535px] top-[-40px] flex justify-center text-red-500">{errorMessage}</div>
               )}
               {/* <label htmlFor="detailsFileInput" className="font-Poppins font-medium text-[15px] leading-[22.5px] flex justify-start px-4 py-2 text-white cursor-pointer">
         Upload 
@@ -1249,8 +1282,8 @@ export default function quiztype() {
       <div className="w-[137.09px] h-[9.05px] absolute top-[740.11px] -mt-[636px]">
         <Line percent={detailsUploadProgress} strokeWidth={5} strokeColor="#FCE7E7" />
       </div>
-      <div className="w-[137.09px] h-[9.05px] absolute top-[760px] -mt-[636px]">
-        <Line percent={questionsUploadProgress} strokeWidth={5} strokeColor="#FCE7E7" />
+       <div className="w-[137.09px] h-[9.05px] absolute top-[760px] -mt-[636px]">
+         <Line percent={questionsUploadProgress} strokeWidth={5} strokeColor="#FCE7E7" />
       </div>
 
       <h1 className="font-Poppins font-normal text-[10px] leading-[15px] text-[#555555] mt-7 ml-5">{`Uploading Details ${detailsUploadProgress}%`}</h1>
@@ -1286,58 +1319,60 @@ export default function quiztype() {
             </div>
 
             {/* Questions and options */}
-            <div className="absolute top-[210px] left-[298px] w-[1212px] h-[450px] overflow-auto">
-            {questions.map((question, questionIndex) => (
-  <div key={questionIndex} className="mb-8 ">
-    {/* Input field for question */}
-    <div className="flex items-center mb-4">
-      <div className="mr-2 text-xl font-normal">
-        {questionIndex + 1}.
-      </div>
-      <input
-        type="text"
-        placeholder={`Question`}
-        className="w-[70%] h-[50px] rounded-[20px] border-solid border-[#B8BBC2] border-[1.8px] p-[15px] "
-        value={question.question_text}
-        onChange={(e) => {
-          const newQuestions = [...questions];
-          newQuestions[questionIndex].question_text = e.target.value;
-          setQuestions(newQuestions);
-        }}
-      />
+            <div className="absolute top-[210px] left-[298px] w-[1212px] h-[450px] ">
+              {questions.map((question, questionIndex) => (
+                <div key={questionIndex} className="mb-8 ">
+                  {/* Input field for question */}
+                  <div className="flex items-center mb-4">
+                    <div className="mr-2 text-xl font-normal">
+                      {questionIndex + 1}.
+                    </div>
+                    <input
+                      type="text"
+                      placeholder={`Question`}
+                      className="w-[70%] h-[50px] rounded-[20px] border-solid border-[#B8BBC2] border-[1.8px] p-[15px] "
+                      value={question.question_text}
+                      onChange={(e) => {
+                        const newQuestions = [...questions];
+                        newQuestions[questionIndex].question_text =
+                          e.target.value;
+                        setQuestions(newQuestions);
+                      }}
+                    />
 
-      {/* Input field for question weightage */}
-      <input
-        type="number"
-        placeholder="Weightage"
-        className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mx-2 p-[10px] font-normal"
-        value={question.question_weightage}
-        onChange={(e) => {
-          const value = parseInt(e.target.value);
-          const updatedQuestions = questions.map((q, index) => {
-            if (index === questionIndex) {
-              return { ...q, question_weightage: value };
-            }
-            return q;
-          });
-          setQuestions(updatedQuestions);
-        }}
-      />
+                    {/* Input field for question weightage */}
+                    <input
+                      type="number"
+                      placeholder="Weightage"
+                      className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mx-2 p-[10px] font-normal"
+                      value={question.question_weightage}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value);
+                        const updatedQuestions = questions.map((q, index) => {
+                          if (index === questionIndex) {
+                            return { ...q, question_weightage: value };
+                          }
+                          return q;
+                        });
+                        setQuestions(updatedQuestions);
+                      }}
+                    />
 
-      {/* Input field for question duration */}
-      <input
-              type="text"
-              placeholder="Duration"
-              className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[10px] font-normal"
-              value={question.question_duration}
-              onChange={(e) => {
-                const value = parseInt(e.target.value) * 60 ;
-                const updatedQuestions = [...questions];
-                updatedQuestions[questionIndex].question_duration = value;
-                setQuestions(updatedQuestions);
-              }}
-      />
-      {/* <input
+                    {/* Input field for question duration */}
+                    <input
+                      type="text"
+                      placeholder="Duration"
+                      className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[10px] font-normal"
+                      value={question.question_duration}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value) * 60;
+                        const updatedQuestions = [...questions];
+                        updatedQuestions[questionIndex].question_duration =
+                          value;
+                        setQuestions(updatedQuestions);
+                      }}
+                    />
+                    {/* <input
   type="number"
   placeholder="Duration"
   className="w-[130px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[10px] font-normal"
@@ -1355,69 +1390,69 @@ export default function quiztype() {
     }
   }}
 /> */}
-    </div>
-    {/* Input fields for options */}
-    {question.options.map((option, optionIndex) => (
-      <div key={optionIndex} className="flex items-center mb-2">
-        {/* Option input field */}
-        <div className="mr-2 text-xl font-normal">
-          {String.fromCharCode(97 + optionIndex)}.
-        </div>
-        <input
-          type="text"
-          placeholder={`Option Text`}
-          className="w-[339px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[15px] font-normal"
-          value={option.answer_option_text}
-          onChange={(e) => {
-            const newOptions = [...question.options];
-            newOptions[optionIndex].answer_option_text = e.target.value;
-            const newQuestions = [...questions];
-            newQuestions[questionIndex].options = newOptions;
-            setQuestions(newQuestions);
-          }}
-        />
-        {/* Add correct answer flag input */}
-        <button
-          className={`mr-2 ${
-            option.correct_answer_flag ? "bg-green-500" : "bg-gray-300"
-          } rounded-full w-10 h-[20px] transition-colors duration-300 focus:outline-none`}
-          onClick={() =>
-            handleToggleButton(questionIndex, optionIndex)
-          }
-        >
-          <span
-            className={`block ${
-              option.correct_answer_flag
-                ? "translate-x-5"
-                : "translate-x-0"
-            } transform -translate-y-1.5 w-[18px] h-[18px] relative top-[6px] bg-white rounded-full shadow-md transition-transform duration-300`}
-          ></span>
-        </button>
-      </div>
-    ))}
-  </div>
-))}
+                  </div>
+                  {/* Input fields for options */}
+                  {question.options.map((option, optionIndex) => (
+                    <div key={optionIndex} className="flex items-center mb-2">
+                      {/* Option input field */}
+                      <div className="mr-2 text-xl font-normal">
+                        {String.fromCharCode(97 + optionIndex)}.
+                      </div>
+                      <input
+                        type="text"
+                        placeholder={`Option Text`}
+                        className="w-[339px] h-[37px] rounded-[10px] border-solid border-[#B8BBC2] border-[1.8px] mr-2 p-[15px] font-normal"
+                        value={option.answer_option_text}
+                        onChange={(e) => {
+                          const newOptions = [...question.options];
+                          newOptions[optionIndex].answer_option_text =
+                            e.target.value;
+                          const newQuestions = [...questions];
+                          newQuestions[questionIndex].options = newOptions;
+                          setQuestions(newQuestions);
+                        }}
+                      />
+                      {/* Add correct answer flag input */}
+                      <button
+                        className={`mr-2 ${
+                          option.correct_answer_flag
+                            ? "bg-green-500"
+                            : "bg-gray-300"
+                        } rounded-full w-10 h-[20px] transition-colors duration-300 focus:outline-none`}
+                        onClick={() =>
+                          handleToggleButton(questionIndex, optionIndex)
+                        }
+                      >
+                        <span
+                          className={`block ${
+                            option.correct_answer_flag
+                              ? "translate-x-5"
+                              : "translate-x-0"
+                          } transform -translate-y-1.5 w-[18px] h-[18px] relative top-[6px] bg-white rounded-full shadow-md transition-transform duration-300`}
+                        ></span>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              ))}
+              <div className=" flex justify-between items-center pr-[55px] ">
+                <button
+                  className="w-[123px] h-[32px] rounded-[10px] bg-[#1B1852] text-white"
+                  onClick={handleNext2}
+                >
+                  Back
+                </button>
 
+                <button
+                  className="w-[123px] h-[32px] rounded-[10px] bg-[#1B1852] text-white"
+                  onClick={handleNext}
+                >
+                  Create
+                </button>
+              </div>
             </div>
 
             {/* Submit button */}
-            <div className="absolute top-[687px] left-[308px]">
-              <button
-                className="w-[123px] h-[32px] rounded-[10px] bg-[#1B1852] text-white"
-                onClick={handleNext2}
-              >
-                Back
-              </button>
-            </div>
-
-            <div className="absolute top-[687px] left-[775px]">
-              <button
-                className="w-[123px] h-[32px] rounded-[10px] bg-[#1B1852] text-white"
-                onClick={handleNext}
-              >
-                Create
-              </button>
-            </div>
           </main>
         )}
       </div>

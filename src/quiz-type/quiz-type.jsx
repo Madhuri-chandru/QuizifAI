@@ -118,7 +118,7 @@ const options6 = [
 
 const options7 = [
   { label: "Duration" },
-  { label: 10 },
+  { label: '10 mits' },
   { label: 20 },
   { label: 30 },
   { label: 40 },
@@ -571,6 +571,7 @@ export default function quiztype() {
   
       if (response.ok && responseData.response === "success") {
         // Assuming router and state setter are defined properly
+     
         navigate("/quizcreated", { state: { quizData: responseData } });
       } else {
         if (responseData.detail && responseData.detail[0].type === "missing" && responseData.detail[0].loc[1] === "body" && responseData.detail[0].loc[2] === "num_questions") {

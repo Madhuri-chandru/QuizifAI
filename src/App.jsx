@@ -48,7 +48,8 @@ import Pdf1 from "./pdf1/pdf1.jsx"
 import Pdf2 from "./pdf2/pdf2.jsx"
 import Pdf3 from "./pdf3/pdf3.jsx"
 
-
+import Quizcreated1 from "./quizcreated1/quizcreated1.jsx";
+import Quizview1 from "./quizview1/quizview1.jsx";
 import Navigation from "./navbar/navbar.jsx"
 import LogoutBar from "./logoutbar/logoutbar.jsx"
 
@@ -289,7 +290,8 @@ function VerificationHandler() {
             <Route path="quizresults" element={<Quizresults />} />
             <Route path="quizview" element={<Quizview />} />
             <Route path="quizmaster" element={<Quizmaster />} />
-
+            <Route path="quizview1" element={<Quizview1 />} />
+            <Route path="quizcreated1" element={<Quizcreated1 />} />
             <Route path="quizAccess" element={<QuizAccess />} />
 
             
