@@ -3,6 +3,7 @@
 import React from "react";
 //import Image from "next/image";
 import { useNavigate } from "react-router-dom";
+import { useState,useEffect } from "react";
 import styles from "./dashboard.module.css";
 import logoutArrowIcon from "../assets/Images/images/dashboard/logoutArrow1.png";
 import user2Icon from "../assets/Images/images/dashboard/user2.png";
@@ -37,6 +38,39 @@ const LogoutBar = () => {
   const handleBackToLogin = () => {
     navigate("/login");
   };
+
+  const [userId, setUserId] = useState(localStorage.getItem("user_id"));
+  const [username, setUsername] = useState(localStorage.getItem("user_name"));
+  
+  useEffect(() => {
+    const fetchQuizData = async () => {
+      console.log("User ID:", userId);
+      console.log("User Name:", username);
+
+      try {
+        const response = await fetch(
+          `https://quizifai.com:8010/get_prfl_dtls?user_id=${userId}&username=${username}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ user_id: userId }),
+          }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        console.log("Data:", data);
+        // Assume you set the fetched data to the state as necessary
+      } catch (error) {
+        console.error("Error fetching quiz data:", error);
+      }
+    };
+
+    fetchQuizData();
+  }, [userId, username]); 
   return (
     <div className={styles.logout}>
         <div style={{ marginTop: "40px", display: "flex", alignItems: "center" , marginLeft:"20px"}}>
@@ -58,7 +92,7 @@ const LogoutBar = () => {
         <img
           src={user2Icon}
           alt="Background Image"
-          style={{ display: "block", marginLeft: "65px", marginTop: "40px" }}
+          style={{ display: "block", marginLeft: "60px", marginTop: "40px" }}
         />
 
 <img
@@ -75,7 +109,7 @@ const LogoutBar = () => {
         </div>
         <div style={{ textAlign: "center" }}>
           <p style={{ fontSize: "15px", marginBottom: "5px", fontWeight: 600 }}>
-            User Name
+            {username}
           </p>
           <p
             style={{

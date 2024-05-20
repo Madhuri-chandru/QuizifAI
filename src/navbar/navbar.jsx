@@ -67,18 +67,18 @@ const Navigation = () => {
           <img src={quizIcon} alt="Icon 2" className={styles.pageIcon} />
           <span className={styles.pageLink}>Quiz's</span>
         </div>
-        <div className={styles.pageItem} onClick={() => handleNavigation('/history')}>
+        {/* <div className={styles.pageItem} onClick={() => handleNavigation('/history')}>
           <img src={historyIcon} alt="Icon 1" className={styles.pageIcon} />
           <span className={styles.pageLink} >History</span>
-        </div>
+        </div> */}
         <div className={styles.pageItem}  onClick={() => handleNavigation('/schedule')}>
           <img src={scheduleIcon} alt="Icon 2" className={styles.pageIcon} />
           <span className={styles.pageLink} >Schedule</span>
         </div>
-        <div className={styles.pageItem} onClick={() => handleNavigation('/notification')}>
+        {/* <div className={styles.pageItem} onClick={() => handleNavigation('/notification')}>
           <img src={notificationIcon} alt="Icon 1" className={styles.pageIcon} />
           <span className={styles.pageLink}>Notification</span>
-        </div>
+        </div> */}
         <div className={styles.pageItem} onClick={() => handleNavigation('/free-profile')}>
           <img src={profileIcon} alt="Icon 2" className={styles.pageIcon} />
           <span className={styles.pageLink} >Profile</span>
