@@ -1,11 +1,25 @@
 import React from 'react'
 import Navbarhome from '../navbarhome/navbarhome'
+import { CgCloseO } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 const termsandconditions = () => {
+
+    const navigate = useNavigate();
+const handleBackToDashboard = () => {
+    navigate("/signup");
+  };
   return (
     <body class="bg-gray-100 overflow-hidden">
         <Navbarhome/>
     <div class="container mx-auto overflow-hidden p-4">
+        <div>
+             {/* <button className='text-xl border px-5 bg-[#3B61C8] rounded-2xl text-white ml-[320px]' onClick={handleBackToDashboard}>close</button> */}
+          <button>   <CgCloseO className='ml-[380px] w-[50px] h-[25px]' onClick={handleBackToDashboard}/></button>
+        </div>
         <h1 class="text-3xl font-semibold mb-4">QuizifAI Terms and Conditions</h1>
         <section class="bg-white shadow-md rounded-md p-6">
             <h2 class="text-xl font-semibold mb-4">Account Creation</h2>

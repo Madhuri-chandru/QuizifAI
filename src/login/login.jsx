@@ -190,10 +190,10 @@ const LoginPage = () => {
     }
   };
   const handleForgotPasswordSubmit = () => {
-    if (!termsChecked) {
-      setErrorMessage("Please agree to the terms and conditions");
-      return;
-    }
+    // if (!termsChecked) {
+    //   setErrorMessage("Please agree to the terms and conditions");
+    //   return;
+    // }
     const forgotOption = email.includes("@") ? "email" : "mobile";
     // Prepare the request body
     const requestBody = JSON.stringify({
@@ -892,7 +892,7 @@ const LoginPage = () => {
                         className={styles.checkboxContainer1}
                         styles={{ marginTop: "150px" }}
                       >
-                    
+{/*                     
                           <input
                             type="checkbox"
                             id="termsCheckbox"
@@ -907,7 +907,7 @@ const LoginPage = () => {
                        
                         <span className={styles.termsText}>
                           I agree with the terms and conditions
-                        </span>
+                        </span> */}
                       </div>
                       {errorMessage && (
                 <>

@@ -70,7 +70,6 @@ const Signup = () => {
   const [showSecondButton, setShowSecondButton] = useState(false);
   const [countdown, setCountdown] = useState(5); // Initial countdown value
 
-
   const navigate = useNavigate();
   const handleBackToDashboard = () => {
     navigate("/login");
@@ -195,6 +194,18 @@ const Signup = () => {
       })
       .catch((error) => {
         console.error("Error signing up:", error);
+        if (error.detail && error.detail.length > 0) {
+          const detail = error.detail[0];
+          if (detail.type === "value_error" && detail.loc[1] === "user_name") {
+            // Handle the specific error for invalid user name
+            setResponseMessage(detail.msg);
+            // You can perform additional actions here if needed
+          } else {
+            alert('Failed to sign up');
+          }
+        } else {
+          alert('Failed to sign up');
+        }
       });
   };
   const sendOTP = () => {
@@ -714,11 +725,11 @@ const Signup = () => {
             <div className={styles.registrationSuccess1}>
               <h2>Email Verified Successfully</h2>
               <img src={successImage} alt="Success" width={200} height={200} />
-              <p className={styles.redirectText} style={{ fontWeight: 700 }}>
-                Account has been Successfully Verified
+              <p className={styles.redirectText} >
+                Account has been successfully verified
                 <br />
-                you will be Automatically redirecting register page in{" "}
-                {countdown} seconds...
+                you will be automatically redirecting to register page in{" "}
+                {countdown} <span style={{ color: "blue",fontWeight:"700" }}>seconds...</span>
               </p>
               <p className={styles.redirectLink}>
                 Click{" "}

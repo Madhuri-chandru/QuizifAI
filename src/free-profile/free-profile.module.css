@@ -25,15 +25,15 @@
   .toggleButton {
     width: 100px; 
     height: 40px;
-    background-color: #F1FEFF;
+    /* background-color: #F1FEFF; */
     border: 1px solid transparent;
     color: #000; 
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    /* font-weight: 600; */
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin-bottom: 5px; 
+    /* margin-bottom: 5px;  */
   }
   
   /* .toggleButton:hover {
@@ -50,7 +50,7 @@
   .icon1{
     width: 20px;
     height: 16px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-right: 10px;
   }
   .icon2{
@@ -62,7 +62,7 @@
   .icon3{
     width: 16px;
     height: 22px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-right: 10px;
   }
   
@@ -262,7 +262,7 @@ line-height: 30px;
 letter-spacing: 0em;
 text-align: left;
 margin-left: 63px;
-margin-top: 30px;
+margin-top: 16px;
   }
   
   /*.latestResult {
@@ -623,7 +623,7 @@ left: 668px;
   .contentContainer {
     display: flex;
     align-items: center; 
-    gap: 135px;
+    gap: 180px;
   }
   .contentContainer1 {
     display: flex;
@@ -706,7 +706,7 @@ color: #214082;
   .inputRow {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 120px;
     border: none;
     outline: none;
   }
@@ -775,6 +775,7 @@ text-align: left;
     width: 150px;
     height: 33px;
     padding:5px;
+    color: #214082;
     font-size: 12px; 
     border-radius: 10px;
 
@@ -800,7 +801,7 @@ text-align: left;
     display: flex;
     position: relative;
    
-    margin-left: 280px; 
+    margin-left: 240px; 
     margin-top: -33px;
     
     

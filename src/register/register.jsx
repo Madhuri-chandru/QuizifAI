@@ -908,8 +908,8 @@ const register = () => {
                 width={145.4}
                 height={145.4}
               />
-              <p className={styles.redirectText} style={{ fontWeight: 700 }}>
-              You will be redirected to the login page in {countdown}  seconds...
+              <p className={styles.redirectText}>
+              You will be redirected to the login page in {countdown} <span style={{ color: "blue",fontWeight:"700" }}>seconds...</span>
 
              
               </p>
